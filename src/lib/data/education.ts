@@ -3,10 +3,10 @@ import type { Education } from '../types';
 
 export const items: Array<Education> = [
 	{
-		degree: 'Bachelor degree of Computer Science',
+		degree: 'Bachelor Degree of Computer Science',
 		description: '',
-		location: 'Tunisia',
-		logo: Assets.Unknown,
+		location: 'Florida',
+		logo: Assets.UCF,
 		name: '',
 		organization: 'ISTIC',
 		period: { from: new Date(2020, 0, 1), to: new Date(2022, 5, 1) },
