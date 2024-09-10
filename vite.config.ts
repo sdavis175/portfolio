@@ -5,7 +5,7 @@ import mkcert from 'vite-plugin-mkcert';
 
 const config: UserConfig = {
 	plugins: [UnoCSS(), sveltekit(), mkcert()],
-	base: "https://www.shanedavisinc.com/portfolio/"
+	base: "https://www.shanedavisinc.com/"
 };
 
 export default config;
