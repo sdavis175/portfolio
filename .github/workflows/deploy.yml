@@ -20,6 +20,10 @@ jobs:
           touch build/.nojekyll
           cp build/404.html build/index.html
 
+      - name: Check build directory
+        run: |
+          ls -la build
+
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
