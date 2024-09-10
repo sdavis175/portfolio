@@ -1,11 +1,12 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import { theme, toggleTheme } from '$lib/stores/theme';
+	import { languages, selectedLanguage } from '$lib/stores/language'
 	import { items } from '@data/navbar';
-	import * as HOME from '@data/home';
-
 	import { base } from '$app/paths';
 	import UIcon from '../Icon/UIcon.svelte';
+	import { homeData } from '@data/home';
+	import { onDestroy } from 'svelte';
 
 	$: currentRoute = $page.url.pathname;
 
@@ -18,6 +19,26 @@
 			expanded = v;
 		}
 	};
+
+	// Handle language change from selection
+	function changeLanguage(event) {
+		$selectedLanguage = event.target.value;
+		console.log($selectedLanguage)
+	}
+
+	// Handle dynamic language changes
+	let name: string;
+	let lastName: string;
+	const unsubscribe = homeData.subscribe(data => {
+		name = data.name;
+		lastName = data.lastName;
+	});
+
+	// Clean up subscription when component is destroyed
+	onDestroy(() => {
+		unsubscribe();
+	});
+
 </script>
 
 <div class="nav-menu">
@@ -29,12 +50,12 @@
 			<UIcon icon="i-carbon-code" classes="text-2em" />
 			<span
 				class="ml-2 text-md font-bold hidden md:inline overflow-hidden whitespace-nowrap text-ellipsis"
-				>{HOME.name} {HOME.lastName}
+				>{name} {lastName}
 			</span>
 		</a>
 		<div class="flex-1 block overflow-hidden md:hidden whitespace-nowrap text-ellipsis text-center">
-			{HOME.name}
-			{HOME.lastName}
+			{name}
+			{lastName}
 		</div>
 		<div class="flex-row flex-1 self-center h-full justify-center hidden md:flex">
 			{#each items as item (item.title)}
@@ -64,6 +85,13 @@
 						<UIcon icon="i-carbon-sun" />
 					{/if}
 				</button>
+				<div class="select-wrapper">
+					<select on:change={changeLanguage} bind:value={$selectedLanguage} class="select-component">
+						{#each languages as language}
+							<option value={language.code}>{language.name}</option>
+						{/each}
+					</select>
+				</div>
 			</div>
 			<div class="col-center md:hidden h-full hover:bg-[var(--main-hover)] cursor-pointer">
 				<!-- svelte-ignore a11y-no-static-element-interactions -->
@@ -110,6 +138,13 @@
 					<span>Light Theme</span>
 				{/if}
 			</button>
+			<div class="select-wrapper">
+				<select on:change={changeLanguage} bind:value={$selectedLanguage} class="select-component">
+					{#each languages as language}
+						<option value={language.code}>{language.name}</option>
+					{/each}
+				</select>
+			</div>
 		</div>
 	</div>
 </div>
@@ -169,4 +204,49 @@
 			transform: translateY(0vh);
 		}
 	}
+
+  .select-wrapper {
+    display: flex;
+    align-items: center;  // Center vertically
+    justify-content: center;  // Center horizontally if needed
+    height: 100%;  // Adjust this based on your layout needs
+  }
+
+  .select-component {
+    // Basic styles for the select element
+    appearance: none;
+    background-color: var(--main);
+    border: 1px solid var(--border);
+    border-radius: 0.25em;
+    color: var(--main-text);
+    font-family: var(--text-f);
+    text-decoration: none;
+    font-weight: 400;
+    padding: 0.5em 1em;
+    cursor: pointer;
+    transition: background-color 200ms ease, border-color 200ms ease;
+
+    // Focus and hover states
+    &:hover:not(:focus) {
+      background-color: var(--main-hover);
+    }
+    &:focus:not(:hover) {
+      background-color: var(--main);  // Retain the normal background color when focused, but not hovered
+      border-color: var(--border-hover);  // Keep border highlight on focus
+      outline: none;
+    }
+
+    // Disabled state
+    &:disabled {
+      background-color: var(--main-hover);
+      cursor: not-allowed;
+    }
+
+    // Style for options
+    option {
+      background-color: var(--main);
+      color: var(--main-text);
+    }
+  }
+
 </style>

@@ -2,8 +2,9 @@
 	import Carrousel from '$lib/components/Carrousel/Carrousel.svelte';
 	import Icon from '$lib/components/Icon/Icon.svelte';
 	import MainTitle from '$lib/components/MainTitle/MainTitle.svelte';
+	import { onDestroy } from 'svelte';
 	import { titleSuffix } from '@data/app';
-	import { links, description, lastName, name, title, skills } from '@data/home';
+	import { links, homeData, skills } from '@data/home';
 	import { items as skillsItems } from '@data/skills';
 	import { useTitle } from '$lib/utils/helpers';
 	import { isBlank } from '@riadh-adrani/utils';
@@ -15,6 +16,23 @@
 
 		return !isBlank(email) && reg.test(email);
 	};
+
+	let title: string;
+	let name: string;
+	let lastName: string;
+	let description: string;
+
+	const unsubscribe = homeData.subscribe(data => {
+		title = data.title;
+		name = data.name;
+		lastName = data.lastName;
+		description = data.description;
+	});
+
+	// Clean up subscription when component is destroyed
+	onDestroy(() => {
+		unsubscribe();
+	});
 </script>
 
 <svelte:head>

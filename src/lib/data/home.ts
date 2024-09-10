@@ -1,14 +1,45 @@
 import { Platform } from '$lib/types';
 import { getSkills } from './skills';
+import { selectedLanguage } from '@stores/language';
+import { writable } from 'svelte/store';
 
-export const title = 'Home';
+export const homeData = writable({
+	title: 'N/A',
+	name: 'N/A',
+	lastName: 'N/A',
+	description: 'N/A',
+});
 
-export const name = 'Shane';
-
-export const lastName = 'Davis';
-
-export const description =
-	'description';
+selectedLanguage.subscribe((language) => {
+	console.log("Changing " + language);
+	switch (language) {
+		case 'en':
+			homeData.set({
+				title: 'Home',
+				name: 'Shane',
+				lastName: 'Davis',
+				description: 'Test'
+			});
+			break;
+		case 'ja':
+			homeData.set({
+				title: 'ホームページ',
+				name: 'シェーン',
+				lastName: 'デイヴィス',
+				description: 'あいうえお'
+			});
+			break;
+		default:
+			console.error("Unknown language selected.")
+			homeData.set({
+				title: 'N/A',
+				name: 'N/A',
+				lastName: 'N/A',
+				description: 'N/A'
+			});
+			break;
+	}
+})
 
 export const links: Array<{ platform: Platform; link: string }> = [
 	{

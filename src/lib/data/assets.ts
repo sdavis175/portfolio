@@ -71,7 +71,7 @@ const Assets = {
 	Unocss: a('unocss.svg'),
 	Ruvy: a('ruvy.svg'),
 	Postcss: a('postcss.svg'),
-	UCF: a('ucf.png')
+	UCF: a('ucf.svg') // https://commons.wikimedia.org/wiki/File:UCF_Knights_logo.svg
 };
 
 export default Assets;
