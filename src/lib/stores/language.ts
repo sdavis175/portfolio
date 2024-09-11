@@ -10,7 +10,7 @@ export const languages: { code: string; name: string }[] = [
 
 export const selectedLanguage = writable<string>('en'); // Default language
 
-export const updateLanguage = (event:object|string) => {
+export const updateLanguage = (event:Event & { target: HTMLSelectElement }|string) => {
 	const language:string = typeof(event) == 'object' ? event.target.value : event;
 	console.log('Updating language to ' + language);
 	selectedLanguage.set(language);
