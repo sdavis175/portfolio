@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import { theme, toggleTheme } from '$lib/stores/theme';
-	import { languages, selectedLanguage } from '$lib/stores/language'
+	import { languages, selectedLanguage, updateLanguage } from '$lib/stores/language'
 	import { items } from '@data/navbar';
 	import { base } from '$app/paths';
 	import UIcon from '../Icon/UIcon.svelte';
@@ -19,12 +19,6 @@
 			expanded = v;
 		}
 	};
-
-	// Handle language change from selection
-	function changeLanguage(event) {
-		$selectedLanguage = event.target.value;
-		console.log($selectedLanguage)
-	}
 
 	// Handle dynamic language changes
 	let name: string;
@@ -86,7 +80,7 @@
 					{/if}
 				</button>
 				<div class="select-wrapper">
-					<select on:change={changeLanguage} bind:value={$selectedLanguage} class="select-component">
+					<select on:change={updateLanguage} bind:value={$selectedLanguage} class="select-component">
 						{#each languages as language}
 							<option value={language.code}>{language.name}</option>
 						{/each}
@@ -139,7 +133,7 @@
 				{/if}
 			</button>
 			<div class="select-wrapper">
-				<select on:change={changeLanguage} bind:value={$selectedLanguage} class="select-component">
+				<select on:change={updateLanguage} bind:value={$selectedLanguage} class="select-component">
 					{#each languages as language}
 						<option value={language.code}>{language.name}</option>
 					{/each}

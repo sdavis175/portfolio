@@ -1,9 +1,9 @@
 import { browser } from '$app/environment';
 import { writable } from 'svelte/store';
 
-const key = '@riadh-adrani-theme';
+const key = '@is-dark-theme';
 
-const updateLocalStorage = (value: boolean) => {
+export const updateLocalStorage = (key: string, value: boolean|string) => {
 	if (browser) {
 		localStorage.setItem(key, JSON.stringify(value));
 	}
@@ -15,14 +15,14 @@ export const toggleTheme = (value?: boolean) =>
 	theme.update((it) => {
 		const $v = typeof value === 'boolean' ? value : !it;
 
-		updateLocalStorage($v);
+		updateLocalStorage(key, $v);
 
 		document.querySelector(':root')?.setAttribute('data-theme', $v ? 'dark' : 'light');
 
 		return $v;
 	});
 
-export const onHydrated = () => {
+export const onHydratedTheme = () => {
 	const fromStore = localStorage.getItem(key);
 
 	if (!fromStore) {

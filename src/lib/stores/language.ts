@@ -1,8 +1,27 @@
 import { writable } from 'svelte/store';
+import { updateLocalStorage } from '@stores/theme';
 
-export const languages: { code: string, name: string }[] = [
-	{code: 'en', name:'🇺🇸 English'},
-	{code: 'ja', name:'🇯🇵 日本語'}
+const key = '@selected-language';
+
+export const languages: { code: string; name: string }[] = [
+	{ code: 'en', name: '🇺🇸 English' },
+	{ code: 'ja', name: '🇯🇵 日本語' }
 ];
 
 export const selectedLanguage = writable<string>('en'); // Default language
+
+export const updateLanguage = (event:object|string) => {
+	const language:string = typeof(event) == 'object' ? event.target.value : event;
+	console.log('Updating language to ' + language);
+	selectedLanguage.set(language);
+	updateLocalStorage(key, language);
+};
+
+export const onHydratedLanguage = () => {
+	const fromStore: string | null = localStorage.getItem(key);
+	if (!fromStore) {
+		updateLanguage('en'); // Default to English
+	} else {
+		updateLanguage(JSON.parse(fromStore));
+	}
+};

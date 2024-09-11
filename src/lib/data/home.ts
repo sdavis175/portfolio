@@ -11,7 +11,6 @@ export const homeData = writable({
 });
 
 selectedLanguage.subscribe((language) => {
-	console.log("Changing " + language);
 	switch (language) {
 		case 'en':
 			homeData.set({
