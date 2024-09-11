@@ -1,7 +1,8 @@
 <script lang="ts">
-	import { items, title } from '@data/projects';
+	import { projectData } from '@data/projects';
 	import * as skills from '@data/skills';
 	import { onMount } from 'svelte';
+	import { onDestroy } from 'svelte';
 
 	import type { Project, Skill } from '$lib/types';
 
@@ -9,6 +10,19 @@
 	import ProjectCard from '$lib/components/ProjectCard/ProjectCard.svelte';
 	import SearchPage from '$lib/components/SearchPage.svelte';
 	import UIcon from '$lib/components/Icon/UIcon.svelte';
+
+	// Handle dynamic language changes
+	let items: Array<Project>;
+	let title: string;
+	const unsubscribe = projectData.subscribe(data => {
+		items = data.items;
+		title = data.title;
+	});
+
+	// Clean up subscription when component is destroyed
+	onDestroy(() => {
+		unsubscribe();
+	});
 
 	interface SkillFilter extends Skill {
 		isSelected?: boolean;

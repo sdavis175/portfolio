@@ -10,8 +10,8 @@ export const languages: { code: string; name: string }[] = [
 
 export const selectedLanguage = writable<string>('en'); // Default language
 
-export const updateLanguage = (event:Event & { target: HTMLSelectElement }|string) => {
-	const language:string = typeof(event) == 'object' ? event.target.value : event;
+export const updateLanguage = (event:Event & { currentTarget: EventTarget & HTMLSelectElement }|string) => {
+	const language:string = typeof(event) == 'object' ? event.currentTarget.value : event;
 	console.log('Updating language to ' + language);
 	selectedLanguage.set(language);
 	updateLocalStorage(key, language);

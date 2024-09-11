@@ -2,11 +2,12 @@
 	import { page } from '$app/stores';
 	import { theme, toggleTheme } from '$lib/stores/theme';
 	import { languages, selectedLanguage, updateLanguage } from '$lib/stores/language'
-	import { items } from '@data/navbar';
+	import { navbarData } from '@data/navbar';
 	import { base } from '$app/paths';
 	import UIcon from '../Icon/UIcon.svelte';
 	import { homeData } from '@data/home';
 	import { onDestroy } from 'svelte';
+	import type { NavBar } from '$lib/types';
 
 	$: currentRoute = $page.url.pathname;
 
@@ -23,14 +24,20 @@
 	// Handle dynamic language changes
 	let name: string;
 	let lastName: string;
-	const unsubscribe = homeData.subscribe(data => {
+	let items: Array<NavBar>;
+
+	const homeDataUnsubscribe = homeData.subscribe(data => {
 		name = data.name;
 		lastName = data.lastName;
+	});
+	const navbarDataUnsubscribe = navbarData.subscribe(data => {
+		items = data.items;
 	});
 
 	// Clean up subscription when component is destroyed
 	onDestroy(() => {
-		unsubscribe();
+		homeDataUnsubscribe();
+		navbarDataUnsubscribe();
 	});
 
 </script>

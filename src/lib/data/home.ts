@@ -29,7 +29,7 @@ selectedLanguage.subscribe((language) => {
 			});
 			break;
 		default:
-			console.error("Unknown language selected.")
+			console.error("Loading Home - Unknown language selected.")
 			homeData.set({
 				title: 'N/A',
 				name: 'N/A',
