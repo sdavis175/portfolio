@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { title } from '@data/skills';
-	import * as projects from '@data/projects';
+	import { projectData } from '@data/projects';
+	import type { Project } from '$lib/types';
+	import { onDestroy } from 'svelte';
 	import * as experiences from '@data/experience';
 
 	import { base } from '$app/paths';
@@ -25,6 +27,17 @@
 		url: string;
 	};
 
+	// Handle dynamic language changes
+	let projectItems: Array<Project>;
+	const unsubscribe = projectData.subscribe(data => {
+		projectItems = data.items;
+	});
+
+	// Clean up subscription when component is destroyed
+	onDestroy(() => {
+		unsubscribe();
+	});
+
 	export let data: { skill?: Skill };
 
 	const getRelatedProjects = (): Array<Related> => {
@@ -36,7 +49,7 @@
 			return [];
 		}
 
-		projects.items.forEach((item) => {
+		projectItems.forEach((item) => {
 			if (item.skills.some((tech) => tech.slug === skill.slug)) {
 				out.push({
 					img: getAssetURL(item.logo),

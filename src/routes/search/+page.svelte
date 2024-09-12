@@ -4,7 +4,9 @@
 	import { onMount } from 'svelte';
 	import { base } from '$app/paths';
 	import * as experiences from '@data/experience';
-	import * as projects from '@data/projects';
+	import { projectData } from '@data/projects';
+	import type { Project } from '$lib/types';
+	import { onDestroy } from 'svelte';
 	import * as skills from '@data/skills';
 
 	import type { Icon, Item, Skill } from '$lib/types';
@@ -12,6 +14,17 @@
 	import SearchPage from '$lib/components/SearchPage.svelte';
 	import Chip from '$lib/components/Chip/Chip.svelte';
 	import UIcon from '$lib/components/Icon/UIcon.svelte';
+
+	// Handle dynamic language changes
+	let projectItems: Array<Project>;
+	const unsubscribe = projectData.subscribe(data => {
+		projectItems = data.items;
+	});
+
+	// Clean up subscription when component is destroyed
+	onDestroy(() => {
+		unsubscribe();
+	});
 
 	type SearchResultItem = {
 		icon: Icon;
@@ -36,7 +49,7 @@
 
 		// filter
 		result.push(
-			...filterItemsByQuery(projects.items, query).map<SearchResultItem>((data) => ({
+			...filterItemsByQuery(projectItems, query).map<SearchResultItem>((data) => ({
 				data,
 				icon: 'i-carbon-cube',
 				name: data.name,

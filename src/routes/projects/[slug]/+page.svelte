@@ -1,10 +1,9 @@
 <script lang="ts">
 	import { base } from '$app/paths';
+	import { page } from '$app/stores';
 	import { getAssetURL } from '$lib/data/assets';
 	import { projectData } from '@data/projects';
 	import { onDestroy } from 'svelte';
-	import { page } from '$app/stores';
-
 	import type { Project } from '$lib/types';
 
 	import CardLogo from '$lib/components/Card/CardLogo.svelte';
@@ -22,9 +21,9 @@
 	let title: string;
 	let project: Project;
 	let screenshots: Array<{ src: string; label: string }>;
-	const unsubscribe = projectData.subscribe(pdata => {
-		title = pdata.title;
-		project = pdata.items.find((item) =>item.slug === $page.params.slug) as Project;
+	const unsubscribe = projectData.subscribe(data => {
+		title = data.title;
+		project = data.items.find((item) =>item.slug === $page.params.slug) as Project;
 		screenshots = project?.screenshots ?? [];
 		console.log('Loaded project ' + project.name);
 	});
