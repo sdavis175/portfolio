@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { projectData } from '@data/projects';
 	import * as skills from '@data/skills';
+	import { projectData } from '@data/projects';
 	import { onMount } from 'svelte';
 	import { onDestroy } from 'svelte';
 

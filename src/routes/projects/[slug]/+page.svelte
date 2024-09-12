@@ -1,7 +1,9 @@
 <script lang="ts">
 	import { base } from '$app/paths';
 	import { getAssetURL } from '$lib/data/assets';
-	import { title } from '@data/projects';
+	import { projectData } from '@data/projects';
+	import { onDestroy } from 'svelte';
+	import { page } from '$app/stores';
 
 	import type { Project } from '$lib/types';
 
@@ -15,9 +17,22 @@
 	import CardDivider from '$lib/components/Card/CardDivider.svelte';
 	import Screenshot from '$lib/components/Screenshot/Screenshot.svelte';
 
-	export let data: { project?: Project };
 
-	const screenshots = data.project?.screenshots ?? [];
+	// Handle dynamic language changes
+	let title: string;
+	let project: Project;
+	let screenshots: Array<{ src: string; label: string }>;
+	const unsubscribe = projectData.subscribe(pdata => {
+		title = pdata.title;
+		project = pdata.items.find((item) =>item.slug === $page.params.slug) as Project;
+		screenshots = project?.screenshots ?? [];
+		console.log('Loaded project ' + project.name);
+	});
+
+	// Clean up subscription when component is destroyed
+	onDestroy(() => {
+		unsubscribe();
+	});
 
 	let screenIndex: number | undefined = undefined;
 
@@ -26,30 +41,30 @@
 			? screenshots[screenIndex]
 			: undefined;
 
-	$: computedTitle = data.project ? `${data.project.name} - ${title}` : title;
+	$: computedTitle = project ? `${project.name} - ${title}` : title;
 </script>
 
 <TabTitle title={computedTitle} />
 
 <div class="pb-10 overflow-x-hidden col flex-1">
-	{#if data.project === undefined}
+	{#if project === undefined}
 		<div class="p-5 col-center gap-3 m-y-auto text-[var(--accent-text)]">
 			<UIcon icon="i-carbon-cube" classes="text-3.5em" />
 			<p class="font-300">Could not load project data...</p>
 		</div>
 	{:else}
 		<div class="flex flex-col items-center overflow-x-hidden">
-			<Banner img={getAssetURL(data.project.logo)}>
+			<Banner img={getAssetURL(project.logo)}>
 				<div class="col-center p-y-20">
 					<div class="text-0.9em">
-						<MainTitle>{data.project.name}</MainTitle>
+						<MainTitle>{project.name}</MainTitle>
 					</div>
-					<p class="font-300 text-center text-[var(--tertiary-text)] m-y-2">{data.project.type}</p>
+					<p class="font-300 text-center text-[var(--tertiary-text)] m-y-2">{project.type}</p>
 					<div class="w-75%">
 						<CardDivider />
 					</div>
 					<div class="row-center flex-wrap text-[0.9em] text-[var(--tertiary-text)] m-b-2">
-						{#each data.project.links as item}
+						{#each project.links as item}
 							<Chip href={item.to}>
 								<div class="row-center gap-2">
 									<UIcon icon="i-carbon-link" />
@@ -59,7 +74,7 @@
 						{/each}
 					</div>
 					<div class="row-center flex-wrap m-b-2">
-						{#each data.project.skills as item}
+						{#each project.skills as item}
 							<Chip
 								classes="inline-flex flex-row items-center justify-center"
 								href={`${base}/skills/${item.slug}`}
@@ -79,8 +94,8 @@
 			</Banner>
 			<div class="pt-3 pb-1 overflow-x-hidden w-full">
 				<div class="px-10px m-y-5">
-					{#if data.project.description}
-						<Markdown content={data.project.description} />
+					{#if project.description}
+						<Markdown content={project.description} />
 					{:else}
 						<div class="p-5 col-center gap-3 m-y-auto text-[var(--border)]">
 							<UIcon icon="i-carbon-text-font" classes="text-3.5em" />
