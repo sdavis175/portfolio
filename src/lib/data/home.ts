@@ -54,5 +54,3 @@ export const links: Array<{ platform: Platform; link: string }> = [
 		link: 'support@shanedavisinc.com'
 	},
 ];
-
-export const skills = getSkills('en', ['js', 'css', 'html', 'reactjs', 'sass', 'svelte', 'ts']);

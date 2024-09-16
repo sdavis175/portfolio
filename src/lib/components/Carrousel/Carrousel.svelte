@@ -8,6 +8,7 @@
 	let items: Array<Skill>;
 	const skillsDataUnsubscribe = skillsData.subscribe(data => {
 		items = data.items;
+		// Implement logic to filter skill items in here (previously in home.ts)
 	});
 	const delay = 2000;
 
