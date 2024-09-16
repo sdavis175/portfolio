@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { skillsData } from '@data/skills';
 	import { projectsData } from '@data/projects';
-	import type { Project } from '$lib/types';
+	import { experienceData } from '@data/experience';
+	import type { Experience, Project } from '$lib/types';
 	import type { Skill } from '$lib/types';
-	import * as experiences from '@data/experience';
 
 	import { base } from '$app/paths';
 	import { page } from '$app/stores';
@@ -29,6 +29,7 @@
 
 	// Handle dynamic language changes
 	let projectItems: Array<Project>;
+	let experienceItems: Array<Experience>;
 	let skill: Skill;
 	let title: string;
 	const projectsDataUnsubscribe = projectsData.subscribe(data => {
@@ -38,11 +39,15 @@
 		skill = data.items.find((item) => item.slug === $page.params.slug) as Skill;
 		title = data.title;
 	});
+	const experienceDataUnsubscribe = experienceData.subscribe(data => {
+		experienceItems = data.items;
+	});
 
 	// Clean up subscription when component is destroyed
 	onDestroy(() => {
 		projectsDataUnsubscribe();
 		skillsDataUnsubscribe();
+		experienceDataUnsubscribe();
 	});
 
 	const getRelatedProjects = (): Array<Related> => {
@@ -64,7 +69,7 @@
 			}
 		});
 
-		experiences.items.forEach((item) => {
+		experienceItems.forEach((item) => {
 			if (item.skills.some((tech) => tech.slug === skill.slug)) {
 				out.push({
 					img: getAssetURL(item.logo),

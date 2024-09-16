@@ -3,10 +3,10 @@
 	import { filterItemsByQuery, type ItemOrSkill } from '$lib/utils/helpers';
 	import { onMount } from 'svelte';
 	import { base } from '$app/paths';
-	import * as experiences from '@data/experience';
+  import { experienceData } from '@data/experience';
 	import { projectsData } from '@data/projects';
 	import { skillsData } from '@data/skills';
-	import type { Project } from '$lib/types';
+	import type { Experience, Project } from '$lib/types';
 	import { onDestroy } from 'svelte';
 
 	import type { Icon, Item, Skill } from '$lib/types';
@@ -18,17 +18,22 @@
 	// Handle dynamic language changes
 	let projectItems: Array<Project>;
 	let skillsItems: Array<Skill>;
+	let experienceItems: Array<Experience>;
 	const projectsDataUnsubscribe = projectsData.subscribe(data => {
 		projectItems = data.items;
 	});
 	const skillsDataUnsubscribe = skillsData.subscribe(data => {
 		skillsItems = data.items;
 	});
+	const experienceDataUnsubscribe = experienceData.subscribe(data => {
+		experienceItems = data.items;
+	});
 
 	// Clean up subscription when component is destroyed
 	onDestroy(() => {
 		projectsDataUnsubscribe();
 		skillsDataUnsubscribe();
+		experienceDataUnsubscribe();
 	});
 
 	type SearchResultItem = {
@@ -75,7 +80,7 @@
 		);
 
 		result.push(
-			...filterItemsByQuery(experiences.items, query).map<SearchResultItem>((data) => ({
+			...filterItemsByQuery(experienceItems, query).map<SearchResultItem>((data) => ({
 				data,
 				icon: 'i-carbon-development',
 				name: `${data.name} @ ${data.company}`,
