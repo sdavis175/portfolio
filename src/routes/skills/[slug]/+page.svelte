@@ -1,14 +1,14 @@
 <script lang="ts">
-	import { title } from '@data/skills';
-	import { projectData } from '@data/projects';
+	import { skillsData } from '@data/skills';
+	import { projectsData } from '@data/projects';
 	import type { Project } from '$lib/types';
-	import { onDestroy } from 'svelte';
+	import type { Skill } from '$lib/types';
 	import * as experiences from '@data/experience';
 
 	import { base } from '$app/paths';
+	import { page } from '$app/stores';
+	import { onDestroy } from 'svelte';
 	import { getAssetURL } from '$lib/data/assets';
-
-	import type { Skill } from '$lib/types';
 
 	import MainTitle from '$lib/components/MainTitle/MainTitle.svelte';
 	import CardDivider from '$lib/components/Card/CardDivider.svelte';
@@ -29,21 +29,24 @@
 
 	// Handle dynamic language changes
 	let projectItems: Array<Project>;
-	const unsubscribe = projectData.subscribe(data => {
+	let skill: Skill;
+	let title: string;
+	const projectsDataUnsubscribe = projectsData.subscribe(data => {
 		projectItems = data.items;
+	});
+	const skillsDataUnsubscribe = skillsData.subscribe(data => {
+		skill = data.items.find((item) => item.slug === $page.params.slug) as Skill;
+		title = data.title;
 	});
 
 	// Clean up subscription when component is destroyed
 	onDestroy(() => {
-		unsubscribe();
+		projectsDataUnsubscribe();
+		skillsDataUnsubscribe();
 	});
-
-	export let data: { skill?: Skill };
 
 	const getRelatedProjects = (): Array<Related> => {
 		const out: Array<Related> = [];
-
-		const skill = data.skill;
 
 		if (!skill) {
 			return [];
@@ -76,28 +79,28 @@
 		return out;
 	};
 
-	$: computedTitle = data.skill ? `${data.skill.name} - ${title}` : title;
+	$: computedTitle = skill ? `${skill.name} - ${title}` : title;
 
-	$: related = data.skill ? getRelatedProjects() : [];
+	$: related = skill ? getRelatedProjects() : [];
 </script>
 
 <TabTitle title={computedTitle} />
 
 <div class="pb-10 overflow-x-hidden col flex-1">
-	{#if data.skill === undefined}
+	{#if skill === undefined}
 		<div class="p-5 col-center gap-3 m-y-auto text-[var(--accent-text)]">
 			<UIcon icon="i-carbon-software-resource-cluster" classes="text-3.5em" />
 			<p class="font-300">Could not load skill data.</p>
 		</div>
 	{:else}
 		<div class="flex flex-col items-center overflow-x-hidden">
-			<Banner img={getAssetURL(data.skill.logo)}>
-				<MainTitle>{data.skill.name}</MainTitle>
+			<Banner img={getAssetURL(skill.logo)}>
+				<MainTitle>{skill.name}</MainTitle>
 			</Banner>
 			<div class="pt-3 pb-1 overflow-x-hidden w-full">
 				<div class="px-10px m-y-5">
-					{#if data.skill.description}
-						<Markdown content={data.skill.description ?? 'This place is yet to be filled...'} />
+					{#if skill.description}
+						<Markdown content={skill.description ?? 'This place is yet to be filled...'} />
 					{:else}
 						<div class="p-5 col-center gap-3 m-y-auto text-[var(--border)]">
 							<UIcon icon="i-carbon-text-font" classes="text-3.5em" />

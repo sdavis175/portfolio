@@ -4,7 +4,7 @@ import type { Project } from '../types';
 import { selectedLanguage } from '@stores/language';
 import { writable } from 'svelte/store';
 
-const items_en: Array<Project> = [
+const enItems: Array<Project> = [
 	{
 		slug: 'slick-portfolio-angular',
 		color: '#5e95e3',
@@ -18,7 +18,7 @@ const items_en: Array<Project> = [
 		period: {
 			from: new Date()
 		},
-		skills: getSkills('angular', 'ts', 'tailwind'),
+		skills: getSkills('en', ['angular', 'ts', 'tailwind']),
 		type: 'Website Template'
 	},
 	{
@@ -34,7 +34,7 @@ const items_en: Array<Project> = [
 		period: {
 			from: new Date()
 		},
-		skills: getSkills('svelte', 'ts', 'tailwind', 'sass'),
+		skills: getSkills('en', ['svelte', 'ts', 'tailwind', 'sass']),
 		type: 'Website Template',
 		screenshots: [
 			{
@@ -65,7 +65,7 @@ const items_en: Array<Project> = [
 	}
 ];
 
-const items_ja: Array<Project> = [
+const jaItems: Array<Project> = [
 	{
 		slug: 'slick-portfolio-angular',
 		color: '#5e95e3',
@@ -79,7 +79,7 @@ const items_ja: Array<Project> = [
 		period: {
 			from: new Date()
 		},
-		skills: getSkills('angular', 'ts', 'tailwind'),
+		skills: getSkills('ja', ['angular', 'ts', 'tailwind']),
 		type: 'Website Template'
 	},
 	{
@@ -95,7 +95,7 @@ const items_ja: Array<Project> = [
 		period: {
 			from: new Date()
 		},
-		skills: getSkills('svelte', 'ts', 'tailwind', 'sass'),
+		skills: getSkills('ja', ['svelte', 'ts', 'tailwind', 'sass']),
 		type: 'Website Template',
 		screenshots: [
 			{
@@ -126,7 +126,7 @@ const items_ja: Array<Project> = [
 	}
 ];
 
-export const projectData = writable<{
+export const projectsData = writable<{
 	title: string;
 	items: Array<Project>;
 }>({
@@ -137,22 +137,22 @@ export const projectData = writable<{
 selectedLanguage.subscribe((language) => {
 	switch (language) {
 		case 'en':
-			projectData.set({
+			projectsData.set({
 				title: 'Projects',
-				items: items_en,
+				items: enItems,
 			});
 			break;
 
 		case 'ja':
-			projectData.set({
+			projectsData.set({
 				title: 'プロジェクト',
-				items: items_ja,
+				items: jaItems,
 			});
 			break;
 
 		default:
 			console.error("Loading Projects - Unknown language selected.")
-			projectData.set({
+			projectsData.set({
 				title: 'N/A',
 				items: [],
 			});

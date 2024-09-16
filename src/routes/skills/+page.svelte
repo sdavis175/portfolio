@@ -1,18 +1,33 @@
 <script lang="ts">
 	import { base } from '$app/paths';
-	import { title, groupByCategory } from '@data/skills';
+	import { skillsData, groupByCategory } from '@data/skills';
+	import type { Skill, SkillCategory } from '$lib/types';
 	import { getAssetURL } from '$lib/data/assets';
+	import { onDestroy } from 'svelte';
 
 	import SearchPage from '$lib/components/SearchPage.svelte';
 	import Card from '$lib/components/Card/Card.svelte';
 	import UIcon from '$lib/components/Icon/UIcon.svelte';
 
-	let result = groupByCategory('');
+	// Handle dynamic language changes
+	let title: string;
+	let skillItems: Array<Skill> = [];
+	let result: Array<{ category: SkillCategory; items: Array<Skill> }>;
+	const skillsDataUnsubscribe = skillsData.subscribe(data => {
+		title = data.title;
+		skillItems = data.items;
+		result = groupByCategory('', skillItems);
+	});
+
+	// Clean up subscription when component is destroyed
+	onDestroy(() => {
+		skillsDataUnsubscribe();
+	});
 
 	const onSearch = (e: CustomEvent<{ search: string }>) => {
 		const query = e.detail.search;
 
-		result = groupByCategory(query.trim().toLowerCase());
+		result = groupByCategory(query.trim().toLowerCase(), skillItems);
 	};
 </script>
 

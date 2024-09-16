@@ -4,8 +4,7 @@
 	import MainTitle from '$lib/components/MainTitle/MainTitle.svelte';
 	import { onDestroy } from 'svelte';
 	import { titleSuffix } from '@data/app';
-	import { links, homeData, skills } from '@data/home';
-	import { items as skillsItems } from '@data/skills';
+	import { links, homeData } from '@data/home';
 	import { useTitle } from '$lib/utils/helpers';
 	import { isBlank } from '@riadh-adrani/utils';
 	import { getPlatfromIcon } from '$lib/utils';
@@ -22,7 +21,7 @@
 	let lastName: string;
 	let description: string;
 
-	const unsubscribe = homeData.subscribe(data => {
+	const homeDataUnsubscribe = homeData.subscribe(data => {
 		title = data.title;
 		name = data.name;
 		lastName = data.lastName;
@@ -31,7 +30,7 @@
 
 	// Clean up subscription when component is destroyed
 	onDestroy(() => {
-		unsubscribe();
+		homeDataUnsubscribe();
 	});
 </script>
 
@@ -59,5 +58,5 @@
 			{/each}
 		</div>
 	</div>
-	<Carrousel items={skills ?? skillsItems} />
+	<Carrousel/>
 </div>

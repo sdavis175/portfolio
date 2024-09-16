@@ -4,10 +4,10 @@
 	import { onMount } from 'svelte';
 	import { base } from '$app/paths';
 	import * as experiences from '@data/experience';
-	import { projectData } from '@data/projects';
+	import { projectsData } from '@data/projects';
+	import { skillsData } from '@data/skills';
 	import type { Project } from '$lib/types';
 	import { onDestroy } from 'svelte';
-	import * as skills from '@data/skills';
 
 	import type { Icon, Item, Skill } from '$lib/types';
 
@@ -17,13 +17,18 @@
 
 	// Handle dynamic language changes
 	let projectItems: Array<Project>;
-	const unsubscribe = projectData.subscribe(data => {
+	let skillsItems: Array<Skill>;
+	const projectsDataUnsubscribe = projectsData.subscribe(data => {
 		projectItems = data.items;
+	});
+	const skillsDataUnsubscribe = skillsData.subscribe(data => {
+		skillsItems = data.items;
 	});
 
 	// Clean up subscription when component is destroyed
 	onDestroy(() => {
-		unsubscribe();
+		projectsDataUnsubscribe();
+		skillsDataUnsubscribe();
 	});
 
 	type SearchResultItem = {
@@ -59,7 +64,7 @@
 
 		result.push(
 			...filterItemsByQuery(
-				skills.items as unknown as Array<ItemOrSkill>,
+				skillsItems as unknown as Array<ItemOrSkill>,
 				query
 			).map<SearchResultItem>((data) => ({
 				data,

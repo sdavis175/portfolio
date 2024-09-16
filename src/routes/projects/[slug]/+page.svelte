@@ -2,7 +2,7 @@
 	import { base } from '$app/paths';
 	import { page } from '$app/stores';
 	import { getAssetURL } from '$lib/data/assets';
-	import { projectData } from '@data/projects';
+	import { projectsData } from '@data/projects';
 	import { onDestroy } from 'svelte';
 	import type { Project } from '$lib/types';
 
@@ -21,7 +21,7 @@
 	let title: string;
 	let project: Project;
 	let screenshots: Array<{ src: string; label: string }>;
-	const unsubscribe = projectData.subscribe(data => {
+	const unsubscribe = projectsData.subscribe(data => {
 		title = data.title;
 		project = data.items.find((item) =>item.slug === $page.params.slug) as Project;
 		screenshots = project?.screenshots ?? [];

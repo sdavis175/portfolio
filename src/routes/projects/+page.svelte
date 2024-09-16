@@ -1,6 +1,6 @@
 <script lang="ts">
-	import * as skills from '@data/skills';
-	import { projectData } from '@data/projects';
+	import { projectsData } from '@data/projects';
+	import { skillsData } from '@data/skills';
 	import { onMount } from 'svelte';
 	import { onDestroy } from 'svelte';
 
@@ -12,24 +12,29 @@
 	import UIcon from '$lib/components/Icon/UIcon.svelte';
 
 	// Handle dynamic language changes
-	let items: Array<Project>;
+	let projectItems: Array<Project>;
+	let skillItems: Array<Skill> = [];
 	let title: string;
-	const unsubscribe = projectData.subscribe(data => {
-		items = data.items;
+	const projectDataUnsubscribe = projectsData.subscribe(data => {
+		projectItems = data.items;
 		title = data.title;
+	});
+	const skillsDataUnsubscribe = skillsData.subscribe(data => {
+		skillItems = data.items;
 	});
 
 	// Clean up subscription when component is destroyed
 	onDestroy(() => {
-		unsubscribe();
+		projectDataUnsubscribe();
+		skillsDataUnsubscribe();
 	});
 
 	interface SkillFilter extends Skill {
 		isSelected?: boolean;
 	}
 
-	let filters: Array<SkillFilter> = skills.items.filter((it) => {
-		return items.some((project) => project.skills.some((skill) => skill.slug === it.slug));
+	let filters: Array<SkillFilter> = skillItems.filter((it) => {
+		return projectItems.some((project) => project.skills.some((skill) => skill.slug === it.slug));
 	});
 
 	let search = '';
@@ -50,7 +55,7 @@
 	};
 
 	$: {
-		displayed = items.filter((project) => {
+		displayed = projectItems.filter((project) => {
 			const isFiltered =
 				filters.every((item) => !item.isSelected) ||
 				project.skills.some((tech) =>
