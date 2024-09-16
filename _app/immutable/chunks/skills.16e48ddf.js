@@ -1,4 +1,4 @@
-import{c as q,A as t}from"./index.3ac07431.js";import{w as d}from"./paths.996aeb88.js";const p="@selected-language",j=[{code:"en",name:"🇺🇸 English"},{code:"ja",name:"🇯🇵 日本語"}],g=d("en"),m=i=>{const s=typeof i=="object"?i.currentTarget.value:i;console.log("Updating language to "+s),g.set(s),q(p,s)},L=()=>{const i=localStorage.getItem(p);m(i?JSON.parse(i):"en")},b=`# Svelte
+import{c as q,A as t}from"./index.c5eb4f78.js";import{w as d}from"./paths.b1d3b0d8.js";const p="@selected-language",j=[{code:"en",name:"🇺🇸 English"},{code:"ja",name:"🇯🇵 日本語"}],g=d("en"),m=i=>{const s=typeof i=="object"?i.currentTarget.value:i;console.log("Updating language to "+s),g.set(s),q(p,s)},L=()=>{const i=localStorage.getItem(p);m(i?JSON.parse(i):"en")},b=`# Svelte
 
 ---
 
