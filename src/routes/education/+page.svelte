@@ -5,14 +5,28 @@
 	import SearchPage from '$lib/components/SearchPage.svelte';
 	import { getAssetURL } from '$lib/data/assets';
 
-	import { title, items } from '@data/education';
+	import { educationData } from '@data/education';
 	import type { Education } from '$lib/types';
 	import { computeExactDuration, getTimeDiff } from '$lib/utils';
 	import CardDivider from '$lib/components/Card/CardDivider.svelte';
+	import { onDestroy } from 'svelte';
 
 	let search = '';
 
-	let result: Array<Education> = items;
+	let title: string;
+	let result: Array<Education>;
+	let items: Array<Education>;
+	const educationDataUnsubscribe = educationData.subscribe(data => {
+		title = data.title;
+		result = data.items;
+		items = data.items;
+	});
+
+	// Clean up subscription when component is destroyed
+	onDestroy(() => {
+		educationDataUnsubscribe();
+	});
+
 
 	const onSearch = (ev: CustomEvent<{ search: string }>) => {
 		const s = ev.detail.search;

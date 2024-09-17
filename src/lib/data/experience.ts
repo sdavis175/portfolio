@@ -1,6 +1,6 @@
 import Assets from './assets';
-import { getSkills, skillsData } from './skills';
-import { ContractType, type Experience, type Skill, type SkillCategory } from '../types';
+import { getSkills } from './skills';
+import { ContractType, type Experience } from '../types';
 import { writable } from 'svelte/store';
 import { selectedLanguage } from '@stores/language';
 
