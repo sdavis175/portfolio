@@ -10,21 +10,27 @@
 	import { computeExactDuration, getTimeDiff } from '$lib/utils';
 	import CardDivider from '$lib/components/Card/CardDivider.svelte';
 	import { onDestroy } from 'svelte';
+	import { searchData } from '@data/search';
 
 	let search = '';
 
 	let title: string;
 	let result: Array<Education>;
 	let items: Array<Education>;
+	let nothingFoundPlaceholder: string;
 	const educationDataUnsubscribe = educationData.subscribe(data => {
 		title = data.title;
 		result = data.items;
 		items = data.items;
 	});
+	const searchDataUnsubscribe = searchData.subscribe(data => {
+		nothingFoundPlaceholder = data.nothingFoundPlaceholder;
+	});
 
 	// Clean up subscription when component is destroyed
 	onDestroy(() => {
 		educationDataUnsubscribe();
+		searchDataUnsubscribe();
 	});
 
 
@@ -49,7 +55,7 @@
 		{#if result.length === 0}
 			<div class="p-5 col-center gap-3 m-y-auto text-[var(--accent-text)] flex-1">
 				<UIcon icon="i-carbon-development" classes="text-3.5em" />
-				<p class="font-300">Could not find anything...</p>
+				<p class="font-300">{nothingFoundPlaceholder}</p>
 			</div>
 		{:else}
 			<div

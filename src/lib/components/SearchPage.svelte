@@ -5,10 +5,21 @@
 	import { browser } from '$app/environment';
 	import { page } from '$app/stores';
 	import { base } from '$app/paths';
+	import { searchData } from '@data/search';
+	import { onDestroy } from 'svelte';
 
 	export let title = 'Title';
 	export let search = '';
-    let searchInput: Input;
+	let searchInput: Input;
+
+	let searchPlaceholder: string;
+	const searchDataUnsubscribe = searchData.subscribe(data => {
+		searchPlaceholder = data.searchPlaceholder;
+	});
+	// Clean up subscription when component is destroyed
+	onDestroy(() => {
+		searchDataUnsubscribe();
+	});
 
 	const dispatch = createEventDispatcher();
 
@@ -50,7 +61,7 @@
 
 <CommonPage {title}>
 	<div class="w-100% row">
-		<Input bind:this={searchInput} bind:value={search} placeholder={'Search...'} />
+		<Input bind:this={searchInput} bind:value={search} placeholder={searchPlaceholder} />
 	</div>
 	<div class="w-100% col flex-1">
 		<slot />

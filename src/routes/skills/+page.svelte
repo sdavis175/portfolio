@@ -8,20 +8,26 @@
 	import SearchPage from '$lib/components/SearchPage.svelte';
 	import Card from '$lib/components/Card/Card.svelte';
 	import UIcon from '$lib/components/Icon/UIcon.svelte';
+	import { searchData } from '@data/search';
 
 	// Handle dynamic language changes
 	let title: string;
 	let skillItems: Array<Skill> = [];
 	let result: Array<{ category: SkillCategory; items: Array<Skill> }>;
+	let nothingFoundPlaceholder: string;
 	const skillsDataUnsubscribe = skillsData.subscribe(data => {
 		title = data.title;
 		skillItems = data.items;
 		result = groupByCategory('', skillItems);
 	});
+	const searchDataUnsubscribe = searchData.subscribe(data => {
+		nothingFoundPlaceholder = data.nothingFoundPlaceholder;
+	});
 
 	// Clean up subscription when component is destroyed
 	onDestroy(() => {
 		skillsDataUnsubscribe();
+		searchDataUnsubscribe();
 	});
 
 	const onSearch = (e: CustomEvent<{ search: string }>) => {
@@ -35,7 +41,7 @@
 	{#if result.length === 0}
 		<div class="p-5 col-center gap-3 m-y-auto text-[var(--accent-text)] flex-1">
 			<UIcon icon="i-carbon-cube" classes="text-3.5em" />
-			<p class="font-300">Could not find anything...</p>
+			<p class="font-300">{nothingFoundPlaceholder}</p>
 		</div>
 	{:else}
 		<div class="col mt-5 gap-7">

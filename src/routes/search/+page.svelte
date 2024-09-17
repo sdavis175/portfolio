@@ -1,11 +1,11 @@
 <script lang="ts">
-	import { title } from '@data/search';
 	import { filterItemsByQuery, type ItemOrSkill } from '$lib/utils/helpers';
 	import { onMount } from 'svelte';
 	import { base } from '$app/paths';
-  import { experienceData } from '@data/experience';
+	import { experienceData } from '@data/experience';
 	import { projectsData } from '@data/projects';
 	import { skillsData } from '@data/skills';
+	import { searchData } from '@data/search';
 	import type { Experience, Project } from '$lib/types';
 	import { onDestroy } from 'svelte';
 
@@ -19,6 +19,9 @@
 	let projectItems: Array<Project>;
 	let skillsItems: Array<Skill>;
 	let experienceItems: Array<Experience>;
+	let title: string;
+	let tryTypingPlaceholder: string;
+	let nothingFoundPlaceholder: string
 	const projectsDataUnsubscribe = projectsData.subscribe(data => {
 		projectItems = data.items;
 	});
@@ -28,12 +31,18 @@
 	const experienceDataUnsubscribe = experienceData.subscribe(data => {
 		experienceItems = data.items;
 	});
+	const searchDataUnsubscribe = searchData.subscribe(data => {
+		title = data.title;
+		tryTypingPlaceholder = data.tryTypingPlaceholder
+		nothingFoundPlaceholder = data.nothingFoundPlaceholder;
+	});
 
 	// Clean up subscription when component is destroyed
 	onDestroy(() => {
 		projectsDataUnsubscribe();
 		skillsDataUnsubscribe();
 		experienceDataUnsubscribe();
+		searchDataUnsubscribe();
 	});
 
 	type SearchResultItem = {
@@ -95,14 +104,14 @@
 	{#if !query}
 		<div class="flex-1 self-center col-center m-t-10 gap-5 font-300 text-[var(--accent-text)]">
 			<UIcon icon="i-carbon-search-locate-mirror" classes="text-2em" />
-			<span> Try typing something... </span>
+			<span> {tryTypingPlaceholder} </span>
 		</div>
 	{:else}
 		<div>
 			{#if result.length === 0}
 				<div class="flex-1 self-center col-center m-t-10 gap-5 font-300 text-[var(--accent-text)]">
 					<UIcon icon="i-carbon-cube" classes="text-2em" />
-					<span> Oops ! nothing to show ! </span>
+					<span> {nothingFoundPlaceholder} </span>
 				</div>
 			{:else}
 				<div class="flex flex-row flex-wrap gap-1">

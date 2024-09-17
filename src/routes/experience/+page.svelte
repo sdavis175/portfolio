@@ -6,19 +6,25 @@
 	import type { Experience } from '$lib/types';
 	import { isBlank } from '@riadh-adrani/utils';
 	import { onDestroy } from 'svelte';
+	import { searchData } from '@data/search';
 
 	let items: Array<Experience> = [];
 	let title: string;
 	let result: Array<Experience> = [...items];
+	let nothingFoundPlaceholder: string;
 	const experienceDataUnsubscribe = experienceData.subscribe(data => {
 		title = data.title;
 		items = data.items;
 		result = [...items];
 	});
+	const searchDataUnsubscribe = searchData.subscribe(data => {
+		nothingFoundPlaceholder = data.nothingFoundPlaceholder;
+	});
 
 	// Clean up subscription when component is destroyed
 	onDestroy(() => {
 		experienceDataUnsubscribe();
+		searchDataUnsubscribe();
 	});
 
 	const onSearch = (e: CustomEvent<{ search: string }>) => {
@@ -43,7 +49,7 @@
 		{#if result.length === 0}
 			<div class="p-5 col-center gap-3 m-y-auto text-[var(--accent-text)] flex-1">
 				<UIcon icon="i-carbon-development" classes="text-3.5em" />
-				<p class="font-300">Could not find anything...</p>
+				<p class="font-300">{nothingFoundPlaceholder}</p>
 			</div>
 		{:else}
 			<div

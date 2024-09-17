@@ -10,11 +10,13 @@
 	import ProjectCard from '$lib/components/ProjectCard/ProjectCard.svelte';
 	import SearchPage from '$lib/components/SearchPage.svelte';
 	import UIcon from '$lib/components/Icon/UIcon.svelte';
+	import { searchData } from '@data/search';
 
 	// Handle dynamic language changes
 	let projectItems: Array<Project>;
 	let skillItems: Array<Skill> = [];
 	let title: string;
+	let nothingFoundPlaceholder: string;
 	const projectDataUnsubscribe = projectsData.subscribe(data => {
 		projectItems = data.items;
 		title = data.title;
@@ -22,11 +24,15 @@
 	const skillsDataUnsubscribe = skillsData.subscribe(data => {
 		skillItems = data.items;
 	});
+	const searchDataUnsubscribe = searchData.subscribe(data => {
+		nothingFoundPlaceholder = data.nothingFoundPlaceholder;
+	});
 
 	// Clean up subscription when component is destroyed
 	onDestroy(() => {
 		projectDataUnsubscribe();
 		skillsDataUnsubscribe();
+		searchDataUnsubscribe();
 	});
 
 	interface SkillFilter extends Skill {
@@ -100,7 +106,7 @@
 	{#if displayed.length === 0}
 		<div class="p-5 col-center gap-3 m-y-auto text-[var(--accent-text)] flex-1">
 			<UIcon icon="i-carbon-cube" classes="text-3.5em" />
-			<p class="font-300">Could not find anything...</p>
+			<p class="font-300">{nothingFoundPlaceholder}</p>
 		</div>
 	{:else}
 		<div class="projects-list mt-5">
