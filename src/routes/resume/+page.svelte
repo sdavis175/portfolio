@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { resumeData } from '@data/resume';
-	import { onDestroy } from 'svelte';
-	import PdfViewer from 'svelte-pdf';
+	import { onDestroy, onMount } from 'svelte';
 
 	import Chip from '$lib/components/Chip/Chip.svelte';
 	import CommonPage from '$lib/components/CommonPage.svelte';
@@ -19,7 +18,11 @@
 		resumeDataUnsubscribe();
 	});
 
-
+	let PdfViewer: typeof import('svelte-pdf').default | undefined;
+	onMount(async () => {
+		const module = await import('svelte-pdf');
+		PdfViewer = module.default;
+	});
 </script>
 
 <CommonPage {title}>
@@ -29,7 +32,8 @@
 				<div class="resume-item">
 					<h1 class="resume-header">{fileName}</h1>
 					<!--Not sure if going to keep header-->
-					<PdfViewer
+					<svelte:component
+						this={PdfViewer}
 						url={data}
 						data={atob(data64)}
 						showButtons={["navigation", "zoom", "print", "download", "pageInfo"]}
