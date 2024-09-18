@@ -6,6 +6,7 @@
 	import { base } from '$app/paths';
 	import UIcon from '../Icon/UIcon.svelte';
 	import { homeData } from '@data/home';
+	import { searchData } from '@data/search';
 	import { onDestroy } from 'svelte';
 	import type { NavBar } from '$lib/types';
 
@@ -25,19 +26,29 @@
 	let name: string;
 	let lastName: string;
 	let items: Array<NavBar>;
+	let searchTitle: string;
+	let lightMode: string;
+	let darkMode: string;
 
 	const homeDataUnsubscribe = homeData.subscribe(data => {
 		name = data.name;
 		lastName = data.lastName;
+		lightMode = data.lightMode;
+		darkMode = data.darkMode;
 	});
 	const navbarDataUnsubscribe = navbarData.subscribe(data => {
 		items = data.items;
 	});
+	const searchDataUnsubscribe = searchData.subscribe(data => {
+		searchTitle = data.title;
+	});
+
 
 	// Clean up subscription when component is destroyed
 	onDestroy(() => {
 		homeDataUnsubscribe();
 		navbarDataUnsubscribe();
+		searchDataUnsubscribe();
 	});
 
 </script>
@@ -125,7 +136,7 @@
 				on:click={() => toggleExpanded(false)}
 			>
 				<UIcon icon="i-carbon-search" />
-				<span>Search</span>
+				<span>{searchTitle}</span>
 			</a>
 			<button
 				class="bg-transparent text-1em border-none cursor-pointer px-6 py-3 gap-2 row hover:bg-[color:var(--main-hover)] text-[var(--secondary-text)] px-2"
@@ -133,10 +144,10 @@
 			>
 				{#if $theme}
 					<UIcon icon="i-carbon-moon" />
-					<span>Dark Theme</span>
+					<span>{darkMode}</span>
 				{:else}
 					<UIcon icon="i-carbon-sun" />
-					<span>Light Theme</span>
+					<span>{lightMode}</span>
 				{/if}
 			</button>
 			<div class="select-wrapper">

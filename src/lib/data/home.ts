@@ -8,6 +8,8 @@ export const homeData = writable({
 	name: 'N/A',
 	lastName: 'N/A',
 	description: 'N/A',
+	lightMode: 'N/A',
+	darkMode: 'N/A'
 });
 
 selectedLanguage.subscribe((language) => {
@@ -17,7 +19,9 @@ selectedLanguage.subscribe((language) => {
 				title: 'Home',
 				name: 'Shane',
 				lastName: 'Davis',
-				description: 'Test'
+				description: 'Test',
+				lightMode: 'Light Mode',
+				darkMode: 'Dark Mode'
 			});
 			break;
 		case 'ja':
@@ -25,7 +29,9 @@ selectedLanguage.subscribe((language) => {
 				title: 'ホームページ',
 				name: 'シェーン',
 				lastName: 'デイヴィス',
-				description: 'あいうえお'
+				description: 'あいうえお',
+				lightMode: 'ライトモード',
+				darkMode: 'ダークモード'
 			});
 			break;
 		default:
@@ -34,7 +40,9 @@ selectedLanguage.subscribe((language) => {
 				title: 'N/A',
 				name: 'N/A',
 				lastName: 'N/A',
-				description: 'N/A'
+				description: 'N/A',
+				lightMode: 'N/A',
+				darkMode: 'N/A'
 			});
 			break;
 	}
