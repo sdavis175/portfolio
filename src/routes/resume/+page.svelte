@@ -2,7 +2,6 @@
 	import { resumeData } from '@data/resume';
 	import { onDestroy, onMount } from 'svelte';
 
-	import Chip from '$lib/components/Chip/Chip.svelte';
 	import CommonPage from '$lib/components/CommonPage.svelte';
 
 	let title: string;
@@ -10,7 +9,6 @@
 	const resumeDataUnsubscribe = resumeData.subscribe(data => {
 		title = data.title;
 		resumes = data.resumes;
-
 	});
 
 	// Clean up subscription when component is destroyed
@@ -18,33 +16,29 @@
 		resumeDataUnsubscribe();
 	});
 
-	let PdfViewer: typeof import('svelte-pdf').default | undefined;
+	let PdfViewer: typeof import('svelte-pdf-resize-fix').default | undefined;
 	onMount(async () => {
-		const module = await import('svelte-pdf');
+		const module = await import('svelte-pdf-resize-fix');
 		PdfViewer = module.default;
 	});
 </script>
 
 <CommonPage {title}>
 	<div class="resume">
-		{#if resumes.length > 0}
-			{#each resumes as [fileName, data, data64] (fileName)}
-				<div class="resume-item">
-					<h1 class="resume-header">{fileName}</h1>
-					<!--Not sure if going to keep header-->
-					<svelte:component
-						this={PdfViewer}
-						url={data}
-						data={atob(data64)}
-						showButtons={["navigation", "zoom", "print", "download", "pageInfo"]}
-						showBorder={false}
-						downloadFileName={fileName}
-					/>
-				</div>
-			{/each}
-		{:else}
-			<Chip>Ooops! no CV at the moment.</Chip>
-		{/if}
+		{#each resumes as [fileName, data, data64] (fileName)}
+			<div class="resume-item">
+				<h1 class="resume-header">{fileName}</h1>
+				<!--Not sure if going to keep header-->
+				<svelte:component
+					this={PdfViewer}
+					url={data}
+					data={atob(data64)}
+					showButtons={["navigation", "zoom", "print", "download", "pageInfo"]}
+					showBorder={false}
+					downloadFileName={fileName}
+				/>
+			</div>
+		{/each}
 	</div>
 </CommonPage>
 
