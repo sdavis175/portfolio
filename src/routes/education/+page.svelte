@@ -7,7 +7,7 @@
 
 	import { educationData } from '@data/education';
 	import type { Education } from '$lib/types';
-	import { computeExactDuration, getTimeDiff } from '$lib/utils';
+	import { computeExactDuration, formatDate, getTimeDiff } from '$lib/utils';
 	import CardDivider from '$lib/components/Card/CardDivider.svelte';
 	import { onDestroy } from 'svelte';
 	import { searchData } from '@data/search';
@@ -92,7 +92,8 @@
 									<CardDivider />
 									<div class="row items-center gap-2">
 										<UIcon icon="i-carbon-time" />
-										{computeExactDuration(education.period.from, education.period.to)}
+										<!--{computeExactDuration(education.period.from, education.period.to)}-->
+										{formatDate(education.period.from) + ' ~ ' + formatDate(education.period.to)}
 									</div>
 									<CardDivider />
 								</div>

@@ -169,3 +169,9 @@ export function computeExactDuration(from: Date, to: Date = new Date()): string 
 		})
 		.join(' ');
 }
+
+export function formatDate(date: Date = new Date()): string {
+	const month = (date.getMonth()).toString()
+	const year = date.getFullYear();
+	return `${month}/${year}`;
+}

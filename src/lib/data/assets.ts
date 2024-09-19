@@ -71,7 +71,9 @@ const Assets = {
 	Unocss: a('unocss.svg'),
 	Ruvy: a('ruvy.svg'),
 	Postcss: a('postcss.svg'),
-	UCF: a('ucf.svg') // https://commons.wikimedia.org/wiki/File:UCF_Knights_logo.svg
+	UCF: a('ucf.svg'), // https://commons.wikimedia.org/wiki/File:UCF_Knights_logo.svg
+	Valencia: a('valencia.png'), // Favicon from https://brand.valenciacollege.edu/logos.php
+	KCP: a('kcp.jpg'), // Favicon from https://www.kcpinternational.com/
 };
 
 export default Assets;
