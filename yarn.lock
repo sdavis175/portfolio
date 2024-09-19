@@ -2525,10 +2525,10 @@ svelte-hmr@^0.15.2:
   resolved "https://registry.yarnpkg.com/svelte-hmr/-/svelte-hmr-0.15.2.tgz#d2f6fc82e040f2734abd54cea5cbef46828f2538"
   integrity sha512-q/bAruCvFLwvNbeE1x3n37TYFb3mTBJ6TrCq6p2CoFbSTNhDE9oAtEfpy+wmc9So8AG0Tja+X0/mJzX9tSfvIg==
 
-svelte-pdf-resize-fix@^1.0.26:
-  version "1.0.26"
-  resolved "https://registry.yarnpkg.com/svelte-pdf-resize-fix/-/svelte-pdf-resize-fix-1.0.26.tgz#618dddc12606e18b3bd1f43ab76ff7440902d5f0"
-  integrity sha512-qQ6oh6hZbpXQFAeqNMDU3CQ6Aw5qyeLFMxho6lKiUU1jn8ff9wFzhB14RvMp2SIiNFrckfvXCYpn1Cl42Aetyw==
+svelte-pdf-resize-fix@^1.0.28:
+  version "1.0.28"
+  resolved "https://registry.yarnpkg.com/svelte-pdf-resize-fix/-/svelte-pdf-resize-fix-1.0.28.tgz#814f20bd0ad4b33e245183db03c4793b63fae7f9"
+  integrity sha512-Isd+cUcbb337w7t8QQMrTacM1gs3T7oik+XQiYvVuwcXpJmJzbBaQFv9rISl/qJK3l8CbwnngmFAl4DBnbQIMg==
   dependencies:
     pdfjs-dist "^3.8.162"
 
