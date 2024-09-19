@@ -1,4 +1,4 @@
-import{A as t}from"./index.245c40ab.js";import{s as h}from"./language.d490c15b.js";import{w as f}from"./paths.5a6462b3.js";const m=`# Svelte
+import{A as t}from"./index.69cca82f.js";import{s as h}from"./language.fc94155d.js";import{w as f}from"./paths.d9b2b655.js";const m=`# Svelte
 
 ---
 
