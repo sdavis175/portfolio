@@ -6,26 +6,25 @@
 	import { marked } from 'marked';
 	import 'prismjs/components/prism-typescript';
 	import 'prismjs/themes/prism-tomorrow.css';
-	import { onMount } from 'svelte';
 
 	let container: HTMLDivElement;
 
 	export let content: string;
 
-	onMount(() => {
+	const sanitizer = createSanitizer(window);
+
+	// Reactive statement that runs whenever `content` changes
+	$: if (container && content) {
 		marked.use(gfmHeadingId());
 		marked.use(mangle());
 
-		const sanitizer = createSanitizer(window);
+		const parsed = marked.parse(content);
 
-		if (window) {
-			const parsed = marked.parse(content);
+		container.innerHTML = sanitizer.sanitize(parsed);
 
-			container.innerHTML = sanitizer.sanitize(parsed);
-
-			Prism.highlightAllUnder(container);
-		}
-	});
+		// Highlight the syntax
+		Prism.highlightAllUnder(container);
+	}
 </script>
 
 <div bind:this={container} class="markdown-container" />

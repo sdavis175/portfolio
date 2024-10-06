@@ -1,9 +1,11 @@
 import Assets from './assets';
 import type { Project, Skill, SkillCategory } from '../types';
-import svelte from '../md/svelte.md?raw';
 import { omit, type StringWithAutoComplete } from '@riadh-adrani/utils';
 import { selectedLanguage } from '@stores/language';
 import { writable, get } from 'svelte/store';
+
+import enSvelte from '../md/skills/en/svelte.md?raw';
+import jaSvelte from '../md/skills/ja/svelte.md?raw';
 
 const defineSkillCategory = <S extends string>(data: SkillCategory<S>): SkillCategory<S> => data;
 
@@ -39,8 +41,8 @@ const jaCategories = [
 
 export const skillsData = writable<{
 	title: string;
-	items: readonly Skill[];
-	categories: readonly SkillCategory[];
+	items: Skill[];
+	categories: SkillCategory[];
 }>({
 	title: 'N/A',
 	items: [],
@@ -121,7 +123,7 @@ const enItems = [
 	defineSkill({
 		slug: 'svelte',
 		color: 'orange',
-		description: svelte,
+		description: enSvelte,
 		logo: Assets.Svelte,
 		name: 'Svelte',
 		category: 'library'
@@ -178,7 +180,7 @@ const jaItems = [
 		slug: 'reactjs',
 		color: 'cyan',
 		description:
-			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent orci enim, congue sit amet justo eget, consequat sollicitudin libero. Etiam iaculis lectus tempor, hendrerit enim in, luctus arcu. Maecenas id enim et nibh ullamcorper auctor ac eu est. Donec imperdiet, diam quis malesuada faucibus, nibh ex gravida sapien, posuere pharetra nunc libero tristique turpis. Sed egestas laoreet semper. In hac habitasse platea dictumst. Praesent vitae est nec felis maximus facilisis. Duis luctus dui id urna tristique varius. Ut vulputate leo arcu, non bibendum arcu pulvinar eget. Fusce semper elit ut congue lacinia. Suspendisse magna diam, tempus vitae interdum eget, dictum vitae nisl. Praesent quis fringilla tortor. Donec vitae sagittis dui.',
+			'あいうえお',
 		logo: Assets.ReactJs,
 		name: 'React Jsあいうえお',
 		category: 'library'
@@ -186,7 +188,7 @@ const jaItems = [
 	defineSkill({
 		slug: 'svelte',
 		color: 'orange',
-		description: svelte,
+		description: jaSvelte,
 		logo: Assets.Svelte,
 		name: 'Svelteあいうえお',
 		category: 'library'
@@ -242,16 +244,16 @@ selectedLanguage.subscribe((language) => {
 		case 'en':
 			skillsData.set({
 				title: 'Skills',
-				items: enItems,
-				categories: enCategories
+				items: [...enItems],
+				categories: [...enCategories]
 			});
 			break;
 
 		case 'ja':
 			skillsData.set({
 				title: 'スキール',
-				items: jaItems,
-				categories: jaCategories
+				items: [...jaItems],
+				categories: [...jaCategories]
 			});
 			break;
 
