@@ -74,6 +74,18 @@ const Assets = {
 	UCF: a('ucf.svg'), // https://commons.wikimedia.org/wiki/File:UCF_Knights_logo.svg
 	Valencia: a('valencia.png'), // Favicon from https://brand.valenciacollege.edu/logos.php
 	KCP: a('kcp.jpg'), // Favicon from https://www.kcpinternational.com/
+	AutoHotkey: a('autohotkey.svg'), // https://www.veryicon.com/icons/business/vscode-program-item-icon/autohotkey.html
+	TensorFlow: a('tensorflow.svg'), // https://www.tensorflow.org/extras/tensorflow_brand_guidelines.pdf
+	ScikitLearn: a('scikit-learn.svg'), // https://techicons.dev/icons/scikitlearn
+	Keras: a('keras.svg'), // https://en.m.wikipedia.org/wiki/File:Keras_logo.svg
+	PyTorch: a('pytorch.svg'), // https://commons.wikimedia.org/wiki/File:PyTorch_logo_icon.svg
+	RegEx: a('regex-grey.svg'), // https://iconduck.com/icons/20674/regex
+	DynamoDB: a('dynamodb.svg'), // https://iconduck.com/icons/27073/aws-dynamodb
+	Azure: a('azure.svg'), // https://en.m.wikipedia.org/wiki/File:Microsoft_Azure.svg
+	MicrosoftWord: a('microsoft-word.svg'), // https://en.m.wikipedia.org/wiki/File:Microsoft_Office_Word_%282019%E2%80%93present%29.svg
+	MicrosoftExcel: a('microsoft-excel.svg'), // https://en.m.wikipedia.org/wiki/File:Microsoft_Office_Excel_%282019%E2%80%93present%29.svg
+	MicrosoftPowerPoint: a('microsoft-powerpoint.svg'), // https://en.m.wikipedia.org/wiki/File:Microsoft_Office_PowerPoint_%282019%E2%80%93present%29.svg
+	JetBrains: a('jetbrains.svg'), // https://en.wikipedia.org/wiki/File:JetBrains_beam_logo.svg
 };
 
 export default Assets;
