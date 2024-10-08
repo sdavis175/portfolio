@@ -86,6 +86,7 @@ const Assets = {
 	MicrosoftExcel: a('microsoft-excel.svg'), // https://en.m.wikipedia.org/wiki/File:Microsoft_Office_Excel_%282019%E2%80%93present%29.svg
 	MicrosoftPowerPoint: a('microsoft-powerpoint.svg'), // https://en.m.wikipedia.org/wiki/File:Microsoft_Office_PowerPoint_%282019%E2%80%93present%29.svg
 	JetBrains: a('jetbrains.svg'), // https://en.wikipedia.org/wiki/File:JetBrains_beam_logo.svg
+	Nihongo: a('nihongo.png'), // https://www.facebook.com/The.Nihongo.Learning.Community/?locale=ja_JP
 };
 
 export default Assets;
