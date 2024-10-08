@@ -1,0 +1,4 @@
+# Graduate Level 3D Computer Vision Class Project
+This is a program that I developed in Matlab that uses Projective Geometry and SIFT feature extractor to take a series of images of a scene and convert them to a panoramic mosaic image.
+The general algorithm uses the SIFT feature extractor to find feature points on the middle image and the rest of the images in the sequence and applies projective geometry to warp the other images' feature points to the middle image's feature points. 
+There are detailed explanations in the associated [report](https://github.com/sdavis175/Mosaic_Generator/blob/main/Report.pdf).

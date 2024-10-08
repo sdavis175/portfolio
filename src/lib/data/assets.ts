@@ -87,6 +87,7 @@ const Assets = {
 	MicrosoftPowerPoint: a('microsoft-powerpoint.svg'), // https://en.m.wikipedia.org/wiki/File:Microsoft_Office_PowerPoint_%282019%E2%80%93present%29.svg
 	JetBrains: a('jetbrains.svg'), // https://en.wikipedia.org/wiki/File:JetBrains_beam_logo.svg
 	Nihongo: a('nihongo.png'), // https://www.facebook.com/The.Nihongo.Learning.Community/?locale=ja_JP
+	Matlab: a('matlab.png'), // https://en.m.wikipedia.org/wiki/File:Matlab_Logo.png
 };
 
 export default Assets;

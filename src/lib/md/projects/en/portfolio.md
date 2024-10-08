@@ -1,0 +1,1 @@
+My personal website portfolio, modified from an existing Svelte template to add support for additional languages which required refactoring all data loading and displaying code.

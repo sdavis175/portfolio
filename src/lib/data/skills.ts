@@ -18,6 +18,8 @@ import enAutoHotkey from '@md/skills/en/pro-lang/autohotkey.md?raw';
 import jaAutoHotkey from '@md/skills/ja/pro-lang/autohotkey.md?raw';
 import enC from '@md/skills/en/pro-lang/c.md?raw';
 import jaC from '@md/skills/ja/pro-lang/c.md?raw';
+import enMatlab from '@md/skills/en/pro-lang/matlab.md?raw';
+import jaMatlab from '@md/skills/ja/pro-lang/matlab.md?raw';
 
 // Frameworks
 import enDjango from '@md/skills/en/framework/django.md?raw';
@@ -173,6 +175,14 @@ const enItems = [
 		description: enAutoHotkey,
 		logo: Assets.AutoHotkey,
 		name: 'AutoHotkey',
+		category: 'pro-lang'
+	}, 'en'),
+	defineSkill({
+		slug: 'matlab',
+		color: 'orange',
+		description: enMatlab,
+		logo: Assets.Matlab,
+		name: 'Matlab',
 		category: 'pro-lang'
 	}, 'en'),
 
@@ -379,6 +389,14 @@ const jaItems = [
 		description: jaAutoHotkey,
 		logo: Assets.AutoHotkey,
 		name: 'AutoHotkey',
+		category: 'pro-lang'
+	}, 'ja'),
+	defineSkill({
+		slug: 'matlab',
+		color: 'orange',
+		description: jaMatlab,
+		logo: Assets.Matlab,
+		name: 'Matlab',
 		category: 'pro-lang'
 	}, 'ja'),
 
