@@ -57,15 +57,17 @@ import jaAzureStorage from '@md/skills/ja/db/azure-storage.md?raw';
 import enDocker from '@md/skills/en/devops/docker.md?raw';
 import jaDocker from '@md/skills/ja/devops/docker.md?raw';
 
-// Applications
+// Applications & Services
+import enAzure from '@md/skills/en/application/azure.md?raw';
+import jaAzure from '@md/skills/ja/application/azure.md?raw';
+import enJetBrains from '@md/skills/en/application/jetbrains.md?raw';
+import jaJetBrains from '@md/skills/ja/application/jetbrains.md?raw';
 import enMicrosoftWord from '@md/skills/en/application/microsoft-word.md?raw';
 import jaMicrosoftWord from '@md/skills/ja/application/microsoft-word.md?raw';
 import enMicrosoftExcel from '@md/skills/en/application/microsoft-excel.md?raw';
 import jaMicrosoftExcel from '@md/skills/ja/application/microsoft-excel.md?raw';
 import enMicrosoftPowerPoint from '@md/skills/en/application/microsoft-powerpoint.md?raw';
 import jaMicrosoftPowerPoint from '@md/skills/ja/application/microsoft-powerpoint.md?raw';
-import enJetBrains from '@md/skills/en/application/jetbrains.md?raw';
-import jaJetBrains from '@md/skills/ja/application/jetbrains.md?raw';
 
 const defineSkillCategory = <S extends string>(data: SkillCategory<S>): SkillCategory<S> => data;
 
@@ -82,7 +84,7 @@ const enCategories = [
 	defineSkillCategory({ name: 'Markup & Style', slug: 'markup-style' }),
 	defineSkillCategory({ name: 'Design', slug: 'design' }),
 	defineSkillCategory({ name: 'Soft Skills', slug: 'soft' }),
-	defineSkillCategory({ name: 'Applications', slug: 'application' }),
+	defineSkillCategory({ name: 'Applications & Services', slug: 'application' }),
 ] as const;
 
 const jaCategories = [
@@ -98,7 +100,7 @@ const jaCategories = [
 	defineSkillCategory({ name: 'Markup & Style', slug: 'markup-style' }),
 	defineSkillCategory({ name: 'Design', slug: 'design' }),
 	defineSkillCategory({ name: 'Soft Skills', slug: 'soft' }),
-	defineSkillCategory({ name: 'Applications', slug: 'application' }),
+	defineSkillCategory({ name: 'Applications & Services', slug: 'application' }),
 ] as const;
 
 export const skillsData = writable<{
@@ -306,7 +308,23 @@ const enItems = [
 		category: 'devops'
 	}, 'en'),
 
-	// Applications
+	// Applications & Services
+	defineSkill({
+		slug: 'azure',
+		color: 'cyan',
+		description: enAzure,
+		logo: Assets.Azure,
+		name: 'Microsoft Azure',
+		category: 'application'
+	}, 'en'),
+	defineSkill({
+		slug: 'jetbrains',
+		color: 'black',
+		description: enJetBrains,
+		logo: Assets.JetBrains,
+		name: 'JetBrains IDEs',
+		category: 'application'
+	}, 'en'),
 	defineSkill({
 		slug: 'microsoft-word',
 		color: 'blue',
@@ -329,14 +347,6 @@ const enItems = [
 		description: enMicrosoftPowerPoint,
 		logo: Assets.MicrosoftPowerPoint,
 		name: 'Microsoft PowerPoint',
-		category: 'application'
-	}, 'en'),
-	defineSkill({
-		slug: 'jetbrains',
-		color: 'black',
-		description: enJetBrains,
-		logo: Assets.JetBrains,
-		name: 'JetBrains IDEs',
 		category: 'application'
 	}, 'en'),
 ] as const;
@@ -520,7 +530,23 @@ const jaItems = [
 		category: 'devops'
 	}, 'ja'),
 
-	// Applications
+	// Applications & Services
+	defineSkill({
+		slug: 'azure',
+		color: 'cyan',
+		description: jaAzure,
+		logo: Assets.Azure,
+		name: 'Microsoft Azure',
+		category: 'cloud'
+	}, 'ja'),
+	defineSkill({
+		slug: 'jetbrains',
+		color: 'black',
+		description: jaJetBrains,
+		logo: Assets.JetBrains,
+		name: 'JetBrains IDEs',
+		category: 'application'
+	}, 'ja'),
 	defineSkill({
 		slug: 'microsoft-word',
 		color: 'blue',
@@ -543,14 +569,6 @@ const jaItems = [
 		description: jaMicrosoftPowerPoint,
 		logo: Assets.MicrosoftPowerPoint,
 		name: 'Microsoft PowerPoint',
-		category: 'application'
-	}, 'ja'),
-	defineSkill({
-		slug: 'jetbrains',
-		color: 'black',
-		description: jaJetBrains,
-		logo: Assets.JetBrains,
-		name: 'JetBrains IDEs',
 		category: 'application'
 	}, 'ja'),
 ] as const;
