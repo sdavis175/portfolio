@@ -19,7 +19,7 @@ selectedLanguage.subscribe((language) => {
 				title: 'Home',
 				name: 'Shane',
 				lastName: 'Davis',
-				description: 'Test',
+				description: 'Back-end developer and 3D Printer hobbyist.',
 				lightMode: 'Light Mode',
 				darkMode: 'Dark Mode'
 			});
@@ -55,7 +55,7 @@ export const links: Array<{ platform: Platform; link: string }> = [
 	},
 	{
 		platform: Platform.Linkedin,
-		link: 'https://www.linkedin.com/'
+		link: 'https://www.linkedin.com/in/sdavis175'
 	},
 	{
 		platform: Platform.Email,

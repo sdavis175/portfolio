@@ -49,6 +49,15 @@ import mgKitchen from '$lib/screenshots/mosaic-generator/kitchen.png';
 import enPortfolio from '$lib/md/projects/en/portfolio.md?raw';
 import jaPortfolio from '$lib/md/projects/ja/portfolio.md?raw';
 
+// Accessible Document Converter
+import enAccessibleDocumentConverter from '$lib/md/projects/en/accessible-document-converter.md?raw';
+import jaAccessibleDocumentConverter from '$lib/md/projects/ja/accessible-document-converter.md?raw';
+
+// File Processing API
+import enFileProcessingAPI from '$lib/md/projects/en/file-processing-api.md?raw';
+import jaFileProcessingAPI from '$lib/md/projects/ja/file-processing-api.md?raw';
+
+
 const enItems: Array<Project> = [
 	{
 		slug: 'senior-design-project',
@@ -71,7 +80,7 @@ const enItems: Array<Project> = [
 			'dynamodb',
 			'reactjs'
 		]),
-		type: 'Web Application',
+		type: 'Full-Stack Web Application',
 		screenshots: [
 			{
 				label: 'Login Page',
@@ -268,6 +277,48 @@ const enItems: Array<Project> = [
 			'ts'
 		]),
 		type: 'Website'
+	},
+
+	{
+		slug: 'adc',
+		color: 'red',
+		description: enAccessibleDocumentConverter,
+		shortDescription:
+			'Converts documents into an accessible format',
+		links: [],
+		logo: Assets.Unknown,
+		name: 'Accessible Document Converter',
+		period: {
+			from: new Date('2020-06'),
+			to: new Date('2023-06')
+		},
+		skills: getSkills('en', [
+			'python',
+			'regex',
+			'microsoft-word'
+		]),
+		type: 'Application'
+	},
+
+	{
+		slug: 'file-processing-api',
+		color: 'blue',
+		description: enFileProcessingAPI,
+		shortDescription:
+			'Large-scale file processor API',
+		links: [],
+		logo: Assets.Unknown,
+		name: 'File Processing API',
+		period: {
+			from: new Date('2022-01-02'),
+			to: new Date('2023-06')
+		},
+		skills: getSkills('en', [
+			'python',
+			'azure',
+			'azure-storage'
+		]),
+		type: 'API Service'
 	},
 ];
 
@@ -490,6 +541,48 @@ const jaItems: Array<Project> = [
 			'ts'
 		]),
 		type: 'Website'
+	},
+
+	{
+		slug: 'adc',
+		color: 'red',
+		description: jaAccessibleDocumentConverter,
+		shortDescription:
+			'Converts documents into an accessible format',
+		links: [],
+		logo: Assets.Unknown,
+		name: 'Accessible Document Converter',
+		period: {
+			from: new Date('2020-06'),
+			to: new Date('2023-06')
+		},
+		skills: getSkills('ja', [
+			'python',
+			'regex',
+			'microsoft-word'
+		]),
+		type: 'Application'
+	},
+
+	{
+		slug: 'file-processing-api',
+		color: 'blue',
+		description: jaFileProcessingAPI,
+		shortDescription:
+			'Large-scale file processor API',
+		links: [],
+		logo: Assets.Unknown,
+		name: 'File Processing API',
+		period: {
+			from: new Date('2022-01-02'),
+			to: new Date('2023-06')
+		},
+		skills: getSkills('ja', [
+			'python',
+			'azure',
+			'azure-storage'
+		]),
+		type: 'API Service'
 	},
 ];
 

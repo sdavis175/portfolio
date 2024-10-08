@@ -1,0 +1,2 @@
+Due to HIPAA privacy laws in the US, I cannot work with any data as during this period I am studying Japan.
+I have primarily been available for meetings to address any questions about my previous work.

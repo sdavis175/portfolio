@@ -4,99 +4,106 @@ import { ContractType, type Experience } from '../types';
 import { writable } from 'svelte/store';
 import { selectedLanguage } from '@stores/language';
 
+// Markdown Descriptions
+// Shane Davis Inc.
+import enShaneDavisIncActive from '$lib/md/experience/en/shane-davis-inc-active.md?raw';
+import jaShaneDavisIncActive from '$lib/md/experience/ja/shane-davis-inc-active.md?raw';
+import enShaneDavisIncInactive from '$lib/md/experience/en/shane-davis-inc-inactive.md?raw';
+import jaShaneDavisIncInactive from '$lib/md/experience/ja/shane-davis-inc-inactive.md?raw';
+
 const enItems: Array<Experience> = [
 	{
-		slug: 'open-sourcer',
-		company: 'Self-employed',
-		description: 'Creating awesome tools for developers.',
+		slug: 'shane-davis-inc-active',
+		company: 'Shane Davis Inc.',
+		description: enShaneDavisIncActive,
 		contract: ContractType.SelfEmployed,
 		type: 'Software Development',
-		location: 'Home',
-		period: { from: new Date() },
-		skills: getSkills('en', ['ts', 'js']),
-		name: 'Open Source Developer',
+		location: 'Home (US)',
+		period: {
+			from: new Date('2020-06-03'),
+			to: new Date('2023-10-01')
+		},
+		skills: getSkills('en', [
+			'python',
+			'autohotkey',
+			'regex',
+			'microsoft-word',
+			'azure',
+			'azure-storage',
+			'jetbrains'
+		]),
+		name: 'Python Developer (Active)',
 		color: 'red',
 		links: [],
 		logo: Assets.Unknown,
-		shortDescription: 'Creating awesome tools for developers.'
+		shortDescription: 'Developed tools for making documents accessible for the disabled.'
 	},
+
 	{
-		slug: 'software-freelance',
-		company: 'Self-employed',
-		description: 'Creating awesome applications for customers.',
-		contract: ContractType.Freelance,
+		slug: 'shane-davis-inc-inactive',
+		company: 'Shane Davis Inc.',
+		description: enShaneDavisIncInactive,
+		contract: ContractType.SelfEmployed,
 		type: 'Software Development',
-		location: 'Home',
-		period: { from: new Date() },
-		skills: getSkills('en', ['svelte', 'ts', 'sass', 'css', 'html', 'js']),
-		name: 'Freelancer',
-		color: 'blue',
+		location: 'Japan',
+		period: {
+			from: new Date('2023-10'),
+		},
+		skills: getSkills('en', [
+		]),
+		name: 'Python Developer (Inactive)',
+		color: 'red',
 		links: [],
 		logo: Assets.Unknown,
-		shortDescription: 'Creating awesome applications for customers.'
-	},
-	{
-		slug: 'software-freelance-junior',
-		company: 'Self-employed',
-		description: 'Creating awesome applications for customers.',
-		contract: ContractType.Freelance,
-		type: 'Software Development',
-		location: 'Home',
-		period: { from: new Date(2022, 0, 1), to: new Date() },
-		skills: getSkills('en', ['css', 'html', 'js']),
-		name: 'Junior Freelancer',
-		color: 'green',
-		links: [],
-		logo: Assets.Unknown,
-		shortDescription: 'Creating awesome applications for customers.'
+		shortDescription: 'Available for ad-hoc consulting and support, addressing questions and providing guidance as needed on my previous work.'
 	}
 ];
 
 const jaItems: Array<Experience> = [
 	{
-		slug: 'open-sourcer',
-		company: 'Self-employed',
-		description: 'Creating awesome tools for developers.',
+		slug: 'shane-davis-inc-active',
+		company: 'Shane Davis Inc.',
+		description: jaShaneDavisIncActive,
 		contract: ContractType.SelfEmployed,
 		type: 'Software Development',
-		location: 'Home',
-		period: { from: new Date() },
-		skills: getSkills('ja', ['ts', 'js']),
-		name: 'Open Source Developerあいうえお',
+		location: 'Home (US)',
+		period: {
+			from: new Date('2020-06-03'),
+			to: new Date('2023-10-01')
+		},
+		skills: getSkills('ja', [
+			'python',
+			'autohotkey',
+			'regex',
+			'microsoft-word',
+			'azure',
+			'azure-storage',
+			'jetbrains'
+		]),
+		name: 'Python Developer (Active)',
 		color: 'red',
 		links: [],
 		logo: Assets.Unknown,
-		shortDescription: 'Creating awesome tools for developers.'
+		shortDescription: 'Developed tools for making documents accessible for the disabled.'
 	},
+
 	{
-		slug: 'software-freelance',
-		company: 'Self-employed',
-		description: 'Creating awesome applications for customers.',
-		contract: ContractType.Freelance,
+		slug: 'shane-davis-inc-inactive',
+		company: 'Shane Davis Inc.',
+		description: jaShaneDavisIncInactive,
+		contract: ContractType.SelfEmployed,
 		type: 'Software Development',
-		location: 'Home',
-		period: { from: new Date() },
-		skills: getSkills('ja', ['svelte', 'ts', 'sass', 'css', 'html', 'js']),
-		name: 'Freelancerあいうえお',
-		color: 'blue',
+		location: 'Japan',
+		period: {
+			from: new Date('2023-10'),
+		},
+		skills: getSkills('ja', [
+		]),
+		name: 'Python Developer (Inactive)',
+		color: 'red',
 		links: [],
 		logo: Assets.Unknown,
-		shortDescription: 'Creating awesome applications for customers.'
-	},
-	{
-		slug: 'software-freelance-junior',
-		company: 'Self-employed',
-		description: 'Creating awesome applications for customers.',
-		contract: ContractType.Freelance,
-		type: 'Software Development',
-		location: 'Home',
-		period: { from: new Date(2022, 0, 1), to: new Date() },
-		skills: getSkills('ja', ['css', 'html', 'js']),
-		name: 'Junior Freelancerあいうえお',
-		color: 'green',
-		links: [],
-		logo: Assets.Unknown,
-		shortDescription: 'Creating awesome applications for customers.'
+		shortDescription: 'Available for ad-hoc consulting and support, addressing questions and providing guidance as needed on my previous work.'
 	}
 ];
 
