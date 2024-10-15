@@ -1,4 +1,4 @@
-import{A as e}from"./index.3eb4bd5c.js";import{s as h}from"./language.93ebd587.js";import{w as f}from"./paths.62a416ad.js";function v(a,...c){const t=Object.assign({},a);return Object.keys(t).forEach(r=>{c.includes(r)&&delete t[r]}),t}const j="",k="",w="",S="",M="",D="",T="",J="",A="",P="",R="",H="",z="",B="",L="",x="",E="",C="",p="",N="",O="",I=`# Svelte
+import{A as e}from"./index.25d180f7.js";import{s as h}from"./language.2b566562.js";import{w as f}from"./paths.edd22960.js";function v(a,...c){const t=Object.assign({},a);return Object.keys(t).forEach(r=>{c.includes(r)&&delete t[r]}),t}const j="",k="",w="",S="",M="",D="",T="",J="",A="",P="",R="",H="",z="",B="",L="",x="",E="",C="",p="",N="",O="",I=`# Svelte
 
 ---
 
