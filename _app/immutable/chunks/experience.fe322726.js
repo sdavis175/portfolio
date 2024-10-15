@@ -1,4 +1,4 @@
-import{A as e}from"./index.e816fe79.js";import{g as o}from"./skills.fececefb.js";import{C as n}from"./types.1ebf2f37.js";import{w as i}from"./paths.22227978.js";import{s}from"./language.d497f1e0.js";const r=`I own my own company, Shane Davis Inc., which was contracted to US Braille. 
+import{A as e}from"./index.3eb4bd5c.js";import{g as o}from"./skills.750d82f5.js";import{C as n}from"./types.1ebf2f37.js";import{w as i}from"./paths.62a416ad.js";import{s}from"./language.93ebd587.js";const r=`I own my own company, Shane Davis Inc., which was contracted to US Braille. 
 For that job, I would develop PDF processing tools to take medical documents and process them into an accessible format using Python so that the vision-impaired can read their medical documents. 
 I also built and managed a large-scale file processing API that was built in Azure.
 `,c="",l=`Due to HIPAA privacy laws in the US, I cannot work with any data as during this period I am studying Japan.
