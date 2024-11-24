@@ -328,10 +328,10 @@ const jaItems: Array<Project> = [
 		color: 'gold',
 		description: jaSeniorDesignProject,
 		shortDescription:
-			'Gamifying program and test case submissions for students in Computer Science',
+			'コンピュータサイエンスの学生向けに、プログラムとテストケース提出をゲーミフィケーション化',
 		links: [],
 		logo: Assets.UCF,
-		name: 'UCF CS Testing App',
+		name: 'UCF CSテストアプリ',
 		period: {
 			from: new Date('2021-08-04'),
 			to: new Date('2022-05-01')
@@ -344,30 +344,30 @@ const jaItems: Array<Project> = [
 			'dynamodb',
 			'reactjs'
 		]),
-		type: 'Web Application',
+		type: 'Webアプリケーション',
 		screenshots: [
 			{
-				label: 'Login Page',
+				label: 'ログインページ',
 				src: sdLoginPage
 			},
 			{
-				label: 'Home Page',
+				label: 'ホームページ',
 				src: sdHomePage
 			},
 			{
-				label: 'Assignments Page',
+				label: '課題ページ',
 				src: sdAssignmentsPage
 			},
 			{
-				label: 'Test Case Modal',
+				label: 'テストケースモーダル',
 				src: sdTestCaseModal
 			},
 			{
-				label: 'Leaderboard Page',
+				label: 'リーダーボードページ',
 				src: sdLeaderboardPage
 			},
 			{
-				label: 'Grading Page',
+				label: '採点ページ',
 				src: sdGradingPage
 			},
 		]
@@ -378,7 +378,7 @@ const jaItems: Array<Project> = [
 		color: 'red',
 		description: jaJaVaCE,
 		shortDescription:
-			'Japanese Vocabulary and Comprehension Estimator',
+			'日本語語彙力と理解力の推定ツール',
 		links: [{to: 'https://github.com/sdavis175/JaVaCE/', label: 'GitHub'}],
 		logo: Assets.Nihongo,
 		name: 'JaVaCE',
@@ -393,18 +393,18 @@ const jaItems: Array<Project> = [
 			'numpy',
 			'keras',
 		]),
-		type: 'Language Learning Assistant Program',
+		type: '語学学習支援プログラム',
 		screenshots: [
 			{
-				label: 'Output',
+				label: '出力結果',
 				src: jvceOutput
 			},
 			{
-				label: 'Training Statistics',
+				label: 'トレーニング統計',
 				src: jvceTrainingStats
 			},
 			{
-				label: 'Confusion Matrix',
+				label: '混同行列',
 				src: jvceConfusionMatrix
 			},
 		]
@@ -415,10 +415,10 @@ const jaItems: Array<Project> = [
 		color: 'blue',
 		description: jaDreamBoothMS,
 		shortDescription:
-			'Fine tunes a text-to-image diffusion model on multiple subjects based on the existing Dreambooth fine-tuning method',
+			'既存のDreamBooth微調整手法を基にした、複数対象のテキストから画像への拡散モデルの微調整',
 		links: [{to: 'https://github.com/sdavis175/diffusers_dreambooth_multi_subject/', label: 'GitHub'}],
 		logo: Assets.Unknown,
-		name: 'DreamBooth Multi-Subject Diffusion Model',
+		name: 'DreamBoothマルチ対象拡散モデル',
 		period: {
 			from: new Date('2023-03-02'),
 			to: new Date('2023-05-01')
@@ -428,30 +428,30 @@ const jaItems: Array<Project> = [
 			'pytorch',
 			'numpy',
 		]),
-		type: 'Fine-Tuning Text-to-Image Diffusion Model',
+		type: 'テキストから画像への拡散モデル微調整',
 		screenshots: [
 			{
-				label: 'Example Output 1',
+				label: '出力例1',
 				src: dbmsExample1
 			},
 			{
-				label: 'Example Output 2',
+				label: '出力例2',
 				src: dbmsExample2
 			},
 			{
-				label: 'Example Output 3',
+				label: '出力例3',
 				src: dbmsExample3
 			},
 			{
-				label: 'Original DreamBooth method failure point',
+				label: 'DreamBooth手法の課題点',
 				src: dbmsOriginalMethodFailure
 			},
 			{
-				label: 'Model Diagram',
+				label: 'モデル図',
 				src: dbmsModelDiagram
 			},
 			{
-				label: 'Custom Loss Function',
+				label: 'カスタム損失関数',
 				src: dbmsCustomLoss
 			}
 		]
@@ -462,10 +462,10 @@ const jaItems: Array<Project> = [
 		color: 'red',
 		description: jaLeagueCSHelper,
 		shortDescription:
-			'Object recognition and analysis for the video game League of Legends',
+			'リーグ・オブ・レジェンドのオブジェクト認識と分析',
 		links: [{to: 'https://github.com/sdavis175/League_CS_Helper/', label: 'GitHub'}],
 		logo: Assets.Unknown,
-		name: 'League CS Helper',
+		name: 'League CSヘルパー',
 		period: {
 			from: new Date('2021-10-29'),
 			to: new Date('2021-12-05')
@@ -477,14 +477,14 @@ const jaItems: Array<Project> = [
 			'numpy',
 			'keras',
 		]),
-		type: 'Object Recognition',
+		type: 'オブジェクト認識',
 		screenshots: [
 			{
-				label: 'Health Threshold Off - all monsters are detected',
+				label: '全モンスターが検出されている状態',
 				src: lcshThresholdOff
 			},
 			{
-				label: 'Health Threshold On - only monsters with low enough health are displayed',
+				label: '低体力モンスターのみ表示されている状態',
 				src: lcshThresholdOn
 			},
 		]
@@ -495,10 +495,10 @@ const jaItems: Array<Project> = [
 		color: 'green',
 		description: jaMosaicGenerator,
 		shortDescription:
-			'Generates a panoramic mosaic image from a collection of images using Projective Geometry',
+			'射影幾何学を使用し、画像コレクションからパノラマモザイク画像を生成',
 		links: [{to: 'https://github.com/sdavis175/Mosaic_Generator/', label: 'GitHub'}],
 		logo: Assets.Unknown,
-		name: 'Mosaic Generator',
+		name: 'モザイクジェネレーター',
 		period: {
 			from: new Date('2022-10-24'),
 			to: new Date('2022-11-07')
@@ -506,18 +506,18 @@ const jaItems: Array<Project> = [
 		skills: getSkills('ja', [
 			'matlab'
 		]),
-		type: 'Projective Geometry & SIFT Feature Extractor Visual Application',
+		type: '射影幾何学＆SIFT特徴抽出視覚アプリケーション',
 		screenshots: [
 			{
-				label: 'Example: Office',
+				label: 'オフィス例',
 				src: mgOffice
 			},
 			{
-				label: 'Example: HEC Building',
+				label: 'HECビル例',
 				src: mgHECBuilding
 			},
 			{
-				label: 'Example: Kitchen',
+				label: 'キッチン例',
 				src: mgKitchen
 			},
 		]
@@ -528,10 +528,10 @@ const jaItems: Array<Project> = [
 		color: 'orange',
 		description: jaPortfolio,
 		shortDescription:
-			'My personal website portfolio',
+			'私のポートフォリオウェブサイト',
 		links: [{to: 'https://github.com/sdavis175/portfolio/', label: 'GitHub'}],
 		logo: Assets.Svelte,
-		name: 'Portfolio',
+		name: 'ポートフォリオ',
 		period: {
 			from: new Date('2024-09-08'),
 			to: new Date('2024-10-08') // UPDATE WHEN DONE
@@ -540,7 +540,7 @@ const jaItems: Array<Project> = [
 			'svelte',
 			'ts'
 		]),
-		type: 'Website'
+		type: 'ウェブサイト'
 	},
 
 	{
@@ -548,10 +548,10 @@ const jaItems: Array<Project> = [
 		color: 'red',
 		description: jaAccessibleDocumentConverter,
 		shortDescription:
-			'Converts documents into an accessible format',
+			'文書をアクセシブルな形式に変換',
 		links: [],
 		logo: Assets.Unknown,
-		name: 'Accessible Document Converter',
+		name: 'アクセシブル文書変換ツール',
 		period: {
 			from: new Date('2020-06'),
 			to: new Date('2023-06')
@@ -561,7 +561,7 @@ const jaItems: Array<Project> = [
 			'regex',
 			'microsoft-word'
 		]),
-		type: 'Application'
+		type: 'アプリケーション'
 	},
 
 	{
@@ -569,10 +569,10 @@ const jaItems: Array<Project> = [
 		color: 'blue',
 		description: jaFileProcessingAPI,
 		shortDescription:
-			'Large-scale file processor API',
+			'大規模なファイル処理API',
 		links: [],
 		logo: Assets.Unknown,
-		name: 'File Processing API',
+		name: 'ファイル処理API',
 		period: {
 			from: new Date('2022-01-02'),
 			to: new Date('2023-06')
@@ -582,7 +582,7 @@ const jaItems: Array<Project> = [
 			'azure',
 			'azure-storage'
 		]),
-		type: 'API Service'
+		type: 'ファイル処理API'
 	},
 ];
 

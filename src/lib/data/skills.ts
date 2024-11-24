@@ -88,19 +88,19 @@ const enCategories = [
 ] as const;
 
 const jaCategories = [
-	defineSkillCategory({ name: 'あいうえお', slug: 'pro-lang' }),
-	defineSkillCategory({ name: 'Frameworks', slug: 'framework' }),
-	defineSkillCategory({ name: 'Libraries', slug: 'library' }),
-	defineSkillCategory({ name: 'Languages', slug: 'lang' }),
-	defineSkillCategory({ name: 'Databases', slug: 'db' }),
-	defineSkillCategory({ name: 'ORMs', slug: 'orm' }),
-	defineSkillCategory({ name: 'DevOps', slug: 'devops' }),
-	defineSkillCategory({ name: 'Testing', slug: 'test' }),
-	defineSkillCategory({ name: 'Dev Tools', slug: 'devtools' }),
-	defineSkillCategory({ name: 'Markup & Style', slug: 'markup-style' }),
-	defineSkillCategory({ name: 'Design', slug: 'design' }),
-	defineSkillCategory({ name: 'Soft Skills', slug: 'soft' }),
-	defineSkillCategory({ name: 'Applications & Services', slug: 'application' }),
+	defineSkillCategory({ name: 'プログラミング言語', slug: 'pro-lang' }),
+	defineSkillCategory({ name: 'フレームワーク', slug: 'framework' }),
+	defineSkillCategory({ name: 'ライブラリ', slug: 'library' }),
+	defineSkillCategory({ name: '言語', slug: 'lang' }),
+	defineSkillCategory({ name: 'データベース', slug: 'db' }),
+	defineSkillCategory({ name: 'ORM（オブジェクトリレーショナルマッピング）', slug: 'orm' }),
+	defineSkillCategory({ name: 'DevOps（デブオプス）', slug: 'devops' }),
+	defineSkillCategory({ name: 'テスト', slug: 'test' }),
+	defineSkillCategory({ name: '開発ツール', slug: 'devtools' }),
+	defineSkillCategory({ name: 'マークアップ＆スタイル', slug: 'markup-style' }),
+	defineSkillCategory({ name: 'デザイン', slug: 'design' }),
+	defineSkillCategory({ name: 'ソフトスキル', slug: 'soft' }),
+	defineSkillCategory({ name: 'アプリケーション＆サービス', slug: 'application' }),
 ] as const;
 
 export const skillsData = writable<{
@@ -358,7 +358,7 @@ const jaItems = [
 		color: 'yellow',
 		description: jaPython,
 		logo: Assets.Python,
-		name: 'Python',
+		name: 'Python（パイソン）',
 		category: 'pro-lang'
 	}, 'ja'),
 	defineSkill({
@@ -366,7 +366,7 @@ const jaItems = [
 		color: 'blue',
 		description: jaC,
 		logo: Assets.C,
-		name: 'C',
+		name: 'C言語',
 		category: 'pro-lang'
 	}, 'ja'),
 	defineSkill({
@@ -374,7 +374,7 @@ const jaItems = [
 		color: 'yellow',
 		description: jaJavascript,
 		logo: Assets.JavaScript,
-		name: 'Javascript',
+		name: 'JavaScript（ジャバスクリプト）',
 		category: 'pro-lang'
 	}, 'ja'),
 	defineSkill({
@@ -382,7 +382,7 @@ const jaItems = [
 		color: 'blue',
 		description: jaTypescript,
 		logo: Assets.TypeScript,
-		name: 'Typescript',
+		name: 'TypeScript（タイプスクリプト）',
 		category: 'pro-lang'
 	}, 'ja'),
 	defineSkill({
@@ -390,7 +390,7 @@ const jaItems = [
 		color: 'red',
 		description: jaJava,
 		logo: Assets.Java,
-		name: 'Java',
+		name: 'Java（ジャバ）',
 		category: 'pro-lang'
 	}, 'ja'),
 	defineSkill({
@@ -398,7 +398,7 @@ const jaItems = [
 		color: 'green',
 		description: jaAutoHotkey,
 		logo: Assets.AutoHotkey,
-		name: 'AutoHotkey',
+		name: 'AutoHotkey（オートホットキー）',
 		category: 'pro-lang'
 	}, 'ja'),
 	defineSkill({
@@ -406,7 +406,7 @@ const jaItems = [
 		color: 'orange',
 		description: jaMatlab,
 		logo: Assets.Matlab,
-		name: 'Matlab',
+		name: 'MATLAB（マトラボ）',
 		category: 'pro-lang'
 	}, 'ja'),
 
@@ -416,7 +416,7 @@ const jaItems = [
 		color: 'green',
 		description: jaDjango,
 		logo: Assets.Django,
-		name: 'Django',
+		name: 'Django（ジャンゴ）',
 		category: 'framework'
 	}, 'ja'),
 
@@ -426,7 +426,7 @@ const jaItems = [
 		color: 'orange',
 		description: jaTensorFlow,
 		logo: Assets.TensorFlow,
-		name: 'TensorFlow',
+		name: 'TensorFlow（テンソルフロー）',
 		category: 'library'
 	}, 'ja'),
 	defineSkill({
@@ -434,7 +434,7 @@ const jaItems = [
 		color: 'cyan',
 		description: jaReactJS,
 		logo: Assets.ReactJs,
-		name: 'React JS',
+		name: 'React JS（リアクトJS）',
 		category: 'library'
 	}, 'ja'),
 	defineSkill({
@@ -442,7 +442,7 @@ const jaItems = [
 		color: 'cyan',
 		description: jaReactNative,
 		logo: Assets.ReactJs,
-		name: 'React Native',
+		name: 'React Native（リアクトネイティブ）',
 		category: 'library'
 	}, 'ja'),
 	defineSkill({
@@ -450,7 +450,7 @@ const jaItems = [
 		color: 'orange',
 		description: jaSvelte,
 		logo: Assets.Svelte,
-		name: 'Svelte',
+		name: 'Svelte（スヴェルト）',
 		category: 'library'
 	}, 'ja'),
 	defineSkill({
@@ -458,7 +458,7 @@ const jaItems = [
 		color: 'orange',
 		description: jaScikitLearn,
 		logo: Assets.ScikitLearn,
-		name: 'Sci-kit Learn',
+		name: 'Scikit-learn（サイキットラーン）',
 		category: 'library'
 	}, 'ja'),
 	defineSkill({
@@ -466,7 +466,7 @@ const jaItems = [
 		color: 'cyan',
 		description: jaNumpy,
 		logo: Assets.Numpy,
-		name: 'Numpy',
+		name: 'NumPy（ナムパイ）',
 		category: 'library'
 	}, 'ja'),
 	defineSkill({
@@ -474,7 +474,7 @@ const jaItems = [
 		color: 'red',
 		description: jaKeras,
 		logo: Assets.Keras,
-		name: 'Keras',
+		name: 'Keras（ケラス）',
 		category: 'library'
 	}, 'ja'),
 	defineSkill({
@@ -482,7 +482,7 @@ const jaItems = [
 		color: 'orange',
 		description: jaPyTorch,
 		logo: Assets.PyTorch,
-		name: 'PyTorch',
+		name: 'PyTorch（パイトーチ）',
 		category: 'library'
 	}, 'ja'),
 	defineSkill({
@@ -490,7 +490,7 @@ const jaItems = [
 		color: 'grey',
 		description: jaRegEx,
 		logo: Assets.RegEx,
-		name: 'RegEx',
+		name: '正規表現（RegEx）',
 		category: 'library'
 	}, 'ja'),
 
@@ -500,7 +500,7 @@ const jaItems = [
 		color: 'green',
 		description: jaMongoDB,
 		logo: Assets.MongoDB,
-		name: 'MongoDB',
+		name: 'MongoDB（モンゴDB）',
 		category: 'db'
 	}, 'ja'),
 	defineSkill({
@@ -508,7 +508,7 @@ const jaItems = [
 		color: 'cyan',
 		description: jaDynamoDB,
 		logo: Assets.DynamoDB,
-		name: 'Amazon DynamoDB',
+		name: 'Amazon DynamoDB（アマゾンダイナモDB）',
 		category: 'db'
 	}, 'ja'),
 	defineSkill({
@@ -516,7 +516,7 @@ const jaItems = [
 		color: 'cyan',
 		description: jaAzureStorage,
 		logo: Assets.Azure,
-		name: 'Azure Storage',
+		name: 'Azure Storage（アジュールストレージ）',
 		category: 'db'
 	}, 'ja'),
 
@@ -526,7 +526,7 @@ const jaItems = [
 		color: 'cyan',
 		description: jaDocker,
 		logo: Assets.Docker,
-		name: 'Docker',
+		name: 'Docker（ドッカー）',
 		category: 'devops'
 	}, 'ja'),
 
@@ -536,15 +536,15 @@ const jaItems = [
 		color: 'cyan',
 		description: jaAzure,
 		logo: Assets.Azure,
-		name: 'Microsoft Azure',
-		category: 'cloud'
+		name: 'Microsoft Azure（マイクロソフトアジュール）',
+		category: 'application'
 	}, 'ja'),
 	defineSkill({
 		slug: 'jetbrains',
 		color: 'black',
 		description: jaJetBrains,
 		logo: Assets.JetBrains,
-		name: 'JetBrains IDEs',
+		name: 'JetBrains IDE（ジェットブレインズIDE）',
 		category: 'application'
 	}, 'ja'),
 	defineSkill({
@@ -552,7 +552,7 @@ const jaItems = [
 		color: 'blue',
 		description: jaMicrosoftWord,
 		logo: Assets.MicrosoftWord,
-		name: 'Microsoft Word',
+		name: 'Microsoft Word（マイクロソフトワード）',
 		category: 'application'
 	}, 'ja'),
 	defineSkill({
@@ -560,7 +560,7 @@ const jaItems = [
 		color: 'green',
 		description: jaMicrosoftExcel,
 		logo: Assets.MicrosoftExcel,
-		name: 'Microsoft Excel',
+		name: 'Microsoft Excel（マイクロソフトエクセル）',
 		category: 'application'
 	}, 'ja'),
 	defineSkill({
@@ -568,7 +568,7 @@ const jaItems = [
 		color: 'orange',
 		description: jaMicrosoftPowerPoint,
 		logo: Assets.MicrosoftPowerPoint,
-		name: 'Microsoft PowerPoint',
+		name: 'Microsoft PowerPoint（マイクロソフトパワーポイント）',
 		category: 'application'
 	}, 'ja'),
 ] as const;

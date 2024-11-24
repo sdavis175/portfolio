@@ -29,7 +29,7 @@ selectedLanguage.subscribe((language) => {
 				title: 'ホームページ',
 				name: 'シェーン',
 				lastName: 'デイヴィス',
-				description: 'あいうえお',
+				description: 'バックエンド開発者兼3Dプリンター愛好家',
 				lightMode: 'ライトモード',
 				darkMode: 'ダークモード'
 			});

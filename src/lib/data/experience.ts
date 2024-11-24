@@ -1,6 +1,6 @@
 import Assets from './assets';
 import { getSkills } from './skills';
-import { ContractType, type Experience } from '../types';
+import { enContractType, jaContractType, type Experience } from '../types';
 import { writable } from 'svelte/store';
 import { selectedLanguage } from '@stores/language';
 
@@ -16,7 +16,7 @@ const enItems: Array<Experience> = [
 		slug: 'shane-davis-inc-active',
 		company: 'Shane Davis Inc.',
 		description: enShaneDavisIncActive,
-		contract: ContractType.SelfEmployed,
+		contract: enContractType.SelfEmployed,
 		type: 'Software Development',
 		location: 'Home (US)',
 		period: {
@@ -43,7 +43,7 @@ const enItems: Array<Experience> = [
 		slug: 'shane-davis-inc-inactive',
 		company: 'Shane Davis Inc.',
 		description: enShaneDavisIncInactive,
-		contract: ContractType.SelfEmployed,
+		contract: enContractType.SelfEmployed,
 		type: 'Software Development',
 		location: 'Japan',
 		period: {
@@ -64,9 +64,9 @@ const jaItems: Array<Experience> = [
 		slug: 'shane-davis-inc-active',
 		company: 'Shane Davis Inc.',
 		description: jaShaneDavisIncActive,
-		contract: ContractType.SelfEmployed,
-		type: 'Software Development',
-		location: 'Home (US)',
+		contract: jaContractType.SelfEmployed,
+		type: 'ソフトウェア開発',
+		location: '自宅（アメリカ）',
 		period: {
 			from: new Date('2020-06-03'),
 			to: new Date('2023-10-01')
@@ -80,30 +80,30 @@ const jaItems: Array<Experience> = [
 			'azure-storage',
 			'jetbrains'
 		]),
-		name: 'Python Developer (Active)',
+		name: 'Python開発者（現役）',
 		color: 'red',
 		links: [],
 		logo: Assets.Unknown,
-		shortDescription: 'Developed tools for making documents accessible for the disabled.'
+		shortDescription: '障がい者向けに文書をアクセシブルな形式に変換するツールを開発しました。'
 	},
 
 	{
 		slug: 'shane-davis-inc-inactive',
 		company: 'Shane Davis Inc.',
 		description: jaShaneDavisIncInactive,
-		contract: ContractType.SelfEmployed,
-		type: 'Software Development',
-		location: 'Japan',
+		contract: jaContractType.SelfEmployed,
+		type: 'ソフトウェア開発',
+		location: '日本',
 		period: {
 			from: new Date('2023-10'),
 		},
 		skills: getSkills('ja', [
 		]),
-		name: 'Python Developer (Inactive)',
+		name: 'Python開発者（休業中）',
 		color: 'red',
 		links: [],
 		logo: Assets.Unknown,
-		shortDescription: 'Available for ad-hoc consulting and support, addressing questions and providing guidance as needed on my previous work.'
+		shortDescription: 'これまでの業務に関する質問やアドバイスを必要に応じて提供しています。'
 	}
 ];
 

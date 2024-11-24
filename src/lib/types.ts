@@ -12,13 +12,22 @@ export enum Platform {
 
 export type Icon = `i-${string}-${string}`;
 
-export enum ContractType {
+export enum enContractType {
 	FullTime = 'Full-time',
 	PartTime = 'Part-time',
 	SelfEmployed = 'Self-employed',
 	Freelance = 'Freelance',
 	Contract = 'Contract',
 	Internship = 'Internship'
+}
+
+export enum jaContractType {
+	FullTime = '正社員',
+	PartTime = 'アルバイト・パート',
+	SelfEmployed = '自営業',
+	Freelance = 'フリーランス',
+	Contract = '契約社員',
+	Internship = 'インターンシップ'
 }
 
 export type Asset = string | { light: string; dark: string };
@@ -66,7 +75,7 @@ export interface Project<S extends string = string> extends Item<S> {
 export interface Experience<S extends string = string> extends Project<S> {
 	company: string;
 	location: string;
-	contract: ContractType;
+	contract: enContractType | jaContractType;
 }
 
 export interface Education<S extends string = string> extends Item<S> {
